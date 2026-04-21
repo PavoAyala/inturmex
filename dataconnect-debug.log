@@ -1,0 +1,86 @@
+I0420 21:21:17.037675   30464 load.go:31] Reloading schema and connectors...
+I0420 21:21:17.066641   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service cf90] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1936B] connector/queries.gql [1349B] 
+I0420 21:21:17.100152   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/implicit.gql [4565B] prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:21:17.100204   30464 load.go:109] Finished reloading
+I0420 21:21:17.100422   30464 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0420 21:21:17.100460   30464 dev.go:104] Listening on address (HTTP + gRPC): [::1]:9399
+I0420 21:21:21.013299   30464 migrate.go:24] Running migration SQL:
+Step 1: CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+Step 2: CREATE TABLE "public"."destino" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "activo" boolean NOT NULL, "descripcion" text NULL, "imagen_url" text NULL, "nombre" text NOT NULL, "orden" integer NULL, "slug" text NOT NULL, PRIMARY KEY ("id"))
+Step 3: CREATE TABLE "public"."circuito" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "destino_id" uuid NULL, "activo" boolean NOT NULL, "ciudades" text NULL, "descripcion" text NULL, "destacado" boolean NOT NULL, "duracion_dias" integer NOT NULL, "imagen_url" text NULL, "impuestos_usd" double precision NOT NULL, "nombre" text NOT NULL, "paises" text NULL, "precio_usd" double precision NOT NULL, "tipo_habitacion" text NULL, PRIMARY KEY ("id"), CONSTRAINT "circuito_destino_id_fkey" FOREIGN KEY ("destino_id") REFERENCES "public"."destino" ("id") ON DELETE SET NULL)
+Step 4: CREATE INDEX "circuito_destinoId_idx" ON "public"."circuito" ("destino_id")
+Step 5: CREATE TABLE "public"."hotel" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "ciudad" text NULL, "nombre" text NOT NULL, "pais" text NULL, "tipo" text NULL, PRIMARY KEY ("id"), CONSTRAINT "hotel_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL)
+Step 6: CREATE INDEX "hotel_circuitoId_idx" ON "public"."hotel" ("circuito_id")
+Step 7: CREATE TABLE "public"."itinerario" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "descripcion" text NOT NULL, "dia" integer NOT NULL, "titulo" text NOT NULL, PRIMARY KEY ("id"), CONSTRAINT "itinerario_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL)
+Step 8: CREATE INDEX "itinerario_circuitoId_idx" ON "public"."itinerario" ("circuito_id")
+Step 9: CREATE TABLE "public"."paquete" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "destino_id" uuid NULL, "activo" boolean NOT NULL, "ciudades" text NULL, "codigo" text NOT NULL, "duracion_dias" integer NOT NULL, "impuestos_usd" double precision NOT NULL, "nombre" text NOT NULL, "precio_usd" double precision NOT NULL, PRIMARY KEY ("id"), CONSTRAINT "paquete_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL, CONSTRAINT "paquete_destino_id_fkey" FOREIGN KEY ("destino_id") REFERENCES "public"."destino" ("id") ON DELETE SET NULL)
+Step 10: CREATE INDEX "paquete_circuitoId_idx" ON "public"."paquete" ("circuito_id")
+Step 11: CREATE INDEX "paquete_destinoId_idx" ON "public"."paquete" ("destino_id")
+Step 12: CREATE TABLE "public"."promocion" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "activo" boolean NOT NULL, "fecha_fin" date NULL, "fecha_inicio" date NULL, "imagen_url" text NOT NULL, "titulo" text NULL, PRIMARY KEY ("id"), CONSTRAINT "promocion_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL)
+Step 13: CREATE INDEX "promocion_circuitoId_idx" ON "public"."promocion" ("circuito_id")
+Step 14: CREATE TABLE "public"."user" ("id" text NOT NULL, "created_at" timestamptz NOT NULL, "display_name" text NOT NULL, "email" text NULL, "photo_url" text NULL, PRIMARY KEY ("id"))
+Step 15: CREATE TABLE "public"."reservacion" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "paquete_id" uuid NULL, "usuario_id" text NULL, "estatus" text NOT NULL, "fecha_viaje" date NOT NULL, "notas" text NULL, "num_personas" integer NOT NULL, "precio_total_usd" double precision NOT NULL, "tipo_habitacion" text NULL, PRIMARY KEY ("id"), CONSTRAINT "reservacion_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL, CONSTRAINT "reservacion_paquete_id_fkey" FOREIGN KEY ("paquete_id") REFERENCES "public"."paquete" ("id") ON DELETE SET NULL, CONSTRAINT "reservacion_usuario_id_fkey" FOREIGN KEY ("usuario_id") REFERENCES "public"."user" ("id") ON DELETE SET NULL)
+Step 16: CREATE INDEX "reservacion_circuitoId_idx" ON "public"."reservacion" ("circuito_id")
+Step 17: CREATE INDEX "reservacion_paqueteId_idx" ON "public"."reservacion" ("paquete_id")
+Step 18: CREATE INDEX "reservacion_usuarioId_idx" ON "public"."reservacion" ("usuario_id")
+Step 19: CREATE TABLE "public"."tarifa" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "circuito_id" uuid NULL, "anio" integer NULL, "impuestos_usd" double precision NULL, "precio_usd" double precision NOT NULL, "tipo" text NOT NULL, PRIMARY KEY ("id"), CONSTRAINT "tarifa_circuito_id_fkey" FOREIGN KEY ("circuito_id") REFERENCES "public"."circuito" ("id") ON DELETE SET NULL)
+Step 20: CREATE INDEX "tarifa_circuitoId_idx" ON "public"."tarifa" ("circuito_id")
+I0420 21:21:22.710673   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service a844] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1936B] connector/queries.gql [1349B] 
+I0420 21:21:22.730192   30464 configure_emulator.go:21] ConfigureEmulator successed
+Request: service_id:  "inturmex-c511a-service"
+connection_string:  "postgres://127.0.0.1:5432/inturmex-c511a-database?sslmode=disable"
+database:  "inturmex-c511a-database"
+
+Response: 
+I0420 21:23:47.101877   30464 load.go:31] Reloading schema and connectors...
+I0420 21:23:48.507946   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service b662] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1955B] 
+I0420 21:23:48.546290   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] prelude.gql [82799B] 
+I0420 21:23:48.546350   30464 load.go:109] Finished reloading
+I0420 21:23:57.108682   30464 load.go:31] Reloading schema and connectors...
+I0420 21:23:58.443955   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 49eb] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1978B] connector/queries.gql [1349B] 
+I0420 21:23:58.481496   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/input.gql [97977B] main/relation.gql [50939B] prelude.gql [82799B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] 
+I0420 21:23:58.481555   30464 load.go:109] Finished reloading
+I0420 21:25:27.110039   30464 load.go:31] Reloading schema and connectors...
+W0420 21:25:28.506277   30464 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 116f] connector "default" has errors: connector/mutations.gql:4:72: Expected {, found (
+
+sources: connector/queries.gql [1349B] connector/mutations.gql [1959B] 
+I0420 21:25:28.506334   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 116f] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1959B] connector/queries.gql [1349B] 
+E0420 21:25:28.511840   30464 load.go:73] Could not load sources: 
+Errors: connector/mutations.gql:4:72: Expected {, found (
+I0420 21:25:28.512996   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:25:28.513060   30464 load.go:74] Finished reloading
+I0420 21:26:47.101044   30464 load.go:31] Reloading schema and connectors...
+I0420 21:26:48.456869   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 627d] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1931B] connector/queries.gql [1349B] 
+I0420 21:26:48.481575   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] 
+I0420 21:26:48.481608   30464 load.go:109] Finished reloading
+I0420 21:27:07.110569   30464 load.go:31] Reloading schema and connectors...
+I0420 21:27:08.500815   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 58b5] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1930B] connector/queries.gql [1349B] 
+I0420 21:27:08.544315   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] 
+I0420 21:27:08.544366   30464 load.go:109] Finished reloading
+I0420 21:27:27.110575   30464 load.go:31] Reloading schema and connectors...
+I0420 21:27:28.499925   30464 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 861c] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1738B] 
+I0420 21:27:28.544071   30464 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] 
+I0420 21:27:28.544119   30464 load.go:109] Finished reloading

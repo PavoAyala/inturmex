@@ -1,0 +1,90 @@
+# Default Mutations for Inturmex
+
+# Create a new destination
+mutation CreateDestino(
+  $nombre: String!
+  $slug: String!
+  $activo: Boolean!
+  $imagenUrl: String
+  $descripcion: String
+  $orden: Int
+) @auth(expr: "true") {
+  destino_insert(data: { 
+    nombre: $nombre, 
+    slug: $slug, 
+    activo: $activo, 
+    imagenUrl: $imagenUrl, 
+    descripcion: $descripcion, 
+    orden: $orden 
+  })
+}
+
+# Create a new circuit
+mutation CreateCircuito(
+  $nombre: String!
+  $destinoId: UUID!
+  $duracionDias: Int!
+  $precioUsd: Float!
+  $impuestosUsd: Float!
+  $activo: Boolean!
+  $destacado: Boolean!
+) @auth(expr: "true") {
+  circuito_insert(data: { 
+    nombre: $nombre, 
+    destino: { id: $destinoId }, 
+    duracionDias: $duracionDias, 
+    precioUsd: $precioUsd, 
+    impuestosUsd: $impuestosUsd, 
+    activo: $activo, 
+    destacado: $destacado 
+  })
+}
+
+# Create or update a user
+mutation UpsertUser(
+  $id: String!
+  $displayName: String!
+  $email: String
+  $photoUrl: String
+) @auth(expr: "true") {
+  user_upsert(data: {
+    id: $id,
+    displayName: $displayName,
+    email: $email,
+    photoUrl: $photoUrl
+  })
+}
+
+# Create a new hotel
+mutation CreateHotel(
+  $circuitoId: UUID!
+  $nombre: String!
+  $ciudad: String
+  $tipo: String
+  $pais: String
+) @auth(expr: "true") {
+  hotel_insert(data: {
+    circuito: { id: $circuitoId },
+    nombre: $nombre,
+    ciudad: $ciudad,
+    tipo: $tipo,
+    pais: $pais
+  })
+}
+
+# Create a new rate
+mutation CreateTarifa(
+  $circuitoId: UUID!
+  $tipo: String!
+  $precioUsd: Float!
+  $impuestosUsd: Float
+  $anio: Int
+) @auth(expr: "true") {
+  tarifa_insert(data: {
+    circuito: { id: $circuitoId },
+    tipo: $tipo,
+    precioUsd: $precioUsd,
+    impuestosUsd: $impuestosUsd,
+    anio: $anio
+  })
+}

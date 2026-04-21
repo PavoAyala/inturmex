@@ -1,0 +1,70 @@
+# Default Queries for Inturmex
+
+# Get all active destinations
+query GetDestinos @auth(level: PUBLIC, insecureReason: "Public travel data") {
+  destinos(where: { activo: { eq: true } }, orderBy: [{ orden: ASC }]) {
+    id
+    nombre
+    slug
+    imagenUrl
+    descripcion
+  }
+}
+
+# Get a destination by slug
+query GetDestinoBySlug($slug: String!) @auth(level: PUBLIC, insecureReason: "Public travel data") {
+  destinos(where: { slug: { eq: $slug } }) {
+    id
+    nombre
+    imagenUrl
+    descripcion
+  }
+}
+
+# Get circuits by destination
+query GetCircuitos($destinoId: UUID) @auth(level: PUBLIC, insecureReason: "Public travel data") {
+  circuitos(where: { 
+    activo: { eq: true },
+    destino: { id: { eq: $destinoId } }
+  }) {
+    id
+    nombre
+    paises
+    ciudades
+    duracionDias
+    precioUsd
+    impuestosUsd
+    imagenUrl
+    destacado
+  }
+}
+
+# Get circuit detail by ID
+query GetCircuitoDetail($id: UUID!) @auth(level: PUBLIC, insecureReason: "Public travel data") {
+  circuito(id: $id) {
+    id
+    nombre
+    paises
+    ciudades
+    duracionDias
+    precioUsd
+    impuestosUsd
+    tipoHabitacion
+    imagenUrl
+    descripcion
+    itinerarios_on_circuito {
+      dia
+      titulo
+      descripcion
+    }
+    hotels_on_circuito {
+      nombre
+      ciudad
+      tipo
+    }
+    tarifas_on_circuito {
+      tipo
+      precioUsd
+    }
+  }
+}

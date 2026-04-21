@@ -13,6 +13,7 @@ export default function Navbar() {
     { name: "Inicio", href: "/" },
     { name: "Nosotros", href: "/nosotros" },
     { name: "Destinos", href: "/destinos" },
+    { name: "Circuitos", href: "/circuitos" },
     { name: "Promociones", href: "/promociones" },
     { name: "Paquetes", href: "/paquetes" },
     { name: "Contacto", href: "/contacto" },

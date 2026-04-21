@@ -1,0 +1,484 @@
+extend type Query {
+  """
+  ✨ Look up a single `Circuito` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  circuito(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Circuito_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Circuito_FirstRow
+  ): Circuito @fdc_generated(from: "Circuito", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Destino` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  destino(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Destino_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Destino_FirstRow
+  ): Destino @fdc_generated(from: "Destino", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Hotel` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  hotel(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Hotel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Hotel_FirstRow
+  ): Hotel @fdc_generated(from: "Hotel", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Itinerario` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  itinerario(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Itinerario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Itinerario_FirstRow
+  ): Itinerario @fdc_generated(from: "Itinerario", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Paquete` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  paquete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Paquete_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Paquete_FirstRow
+  ): Paquete @fdc_generated(from: "Paquete", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Promocion` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  promocion(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Promocion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Promocion_FirstRow
+  ): Promocion @fdc_generated(from: "Promocion", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Reservacion` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  reservacion(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Reservacion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Reservacion_FirstRow
+  ): Reservacion @fdc_generated(from: "Reservacion", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Tarifa` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  tarifa(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Tarifa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Tarifa_FirstRow
+  ): Tarifa @fdc_generated(from: "Tarifa", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ List `Circuito` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  circuitos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Circuito_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Circuito_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Circuito_Having
+  ): [Circuito!]! @fdc_generated(from: "Circuito", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Destino` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  destinos(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Destino_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Destino_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Destino_Having
+  ): [Destino!]! @fdc_generated(from: "Destino", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Hotel` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  hotels(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Hotel_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Hotel_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Hotel_Having
+  ): [Hotel!]! @fdc_generated(from: "Hotel", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Itinerario` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  itinerarios(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Itinerario_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Itinerario_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Itinerario_Having
+  ): [Itinerario!]! @fdc_generated(from: "Itinerario", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Paquete` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  paquetes(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Paquete_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Paquete_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Paquete_Having
+  ): [Paquete!]! @fdc_generated(from: "Paquete", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Promocion` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  promocions(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Promocion_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Promocion_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Promocion_Having
+  ): [Promocion!]! @fdc_generated(from: "Promocion", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Reservacion` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  reservacions(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Reservacion_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Reservacion_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Reservacion_Having
+  ): [Reservacion!]! @fdc_generated(from: "Reservacion", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Tarifa` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  tarifas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Tarifa_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Tarifa_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Tarifa_Having
+  ): [Tarifa!]! @fdc_generated(from: "Tarifa", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: User_Having
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+}

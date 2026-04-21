@@ -3,30 +3,37 @@
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
 
-const destinations = [
-  {
-    name: "América",
-    image: "/images/destinos/machu_picchu.png",
-    description: "Machu Picchu, Perú"
-  },
-  {
-    name: "Europa",
-    image: "/images/destinos/eiffel_tower.png",
-    description: "París, Francia"
-  },
-  {
-    name: "Asia",
-    image: "/images/destinos/mount_fuji.png",
-    description: "Monte Fuji, Japón"
-  },
-  {
-    name: "Norteamérica",
-    image: "/images/destinos/ny_skyline.png",
-    description: "Nueva York, USA"
-  }
-];
+import { useState, useEffect } from "react";
+
+interface Destination {
+  id: string;
+  nombre: string;
+  image: string;
+  description: string;
+}
 
 export default function Destinos() {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/destinos")
+      .then(res => res.json())
+      .then(data => {
+        setDestinations(data.map((d: any) => ({
+          id: d.id,
+          nombre: d.nombre,
+          image: d.imagenUrl,
+          description: d.descripcion
+        })));
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching destinations:", err);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <main className="destinos-page">
       <Navbar />
@@ -50,22 +57,27 @@ export default function Destinos() {
       {/* Destinations Grid */}
       <section className="grid-section">
         <div className="container grid">
-          {destinations.map((dest, index) => (
-            <div key={index} className="dest-card">
-              <Image 
-                src={dest.image} 
-                alt={dest.name} 
-                fill 
-                className="dest-img"
-              />
-              <div className="dest-overlay">
-                <div className="dest-info">
-                  <h2>{dest.name}</h2>
-                  <span>{dest.description}</span>
+          {loading ? (
+            <div className="loading">Cargando destinos...</div>
+          ) : (
+            destinations.map((dest, index) => (
+              <div key={index} className="dest-card">
+                <Image 
+                  src={dest.image || "/images/placeholder.jpg"} 
+                  alt={dest.nombre} 
+                  fill 
+                  className="dest-img"
+                  unoptimized={dest.image?.startsWith('http')}
+                />
+                <div className="dest-overlay">
+                  <div className="dest-info">
+                    <h2>{dest.nombre}</h2>
+                    <span>{dest.description}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 

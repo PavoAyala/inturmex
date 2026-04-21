@@ -1,0 +1,1020 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Circuito` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  circuito_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Circuito_Data!
+  ): Circuito_KeyOutput! @fdc_generated(from: "Circuito", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Destino` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  destino_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Destino_Data!
+  ): Destino_KeyOutput! @fdc_generated(from: "Destino", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Hotel` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  hotel_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Hotel_Data!
+  ): Hotel_KeyOutput! @fdc_generated(from: "Hotel", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Itinerario` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  itinerario_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Itinerario_Data!
+  ): Itinerario_KeyOutput! @fdc_generated(from: "Itinerario", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Paquete` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  paquete_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Paquete_Data!
+  ): Paquete_KeyOutput! @fdc_generated(from: "Paquete", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Promocion` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  promocion_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Promocion_Data!
+  ): Promocion_KeyOutput! @fdc_generated(from: "Promocion", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Reservacion` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  reservacion_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Reservacion_Data!
+  ): Reservacion_KeyOutput! @fdc_generated(from: "Reservacion", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Tarifa` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tarifa_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Tarifa_Data!
+  ): Tarifa_KeyOutput! @fdc_generated(from: "Tarifa", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Circuito` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  circuito_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Circuito_Data!]!
+  ): [Circuito_KeyOutput!]! @fdc_generated(from: "Circuito", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Destino` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  destino_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Destino_Data!]!
+  ): [Destino_KeyOutput!]! @fdc_generated(from: "Destino", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Hotel` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  hotel_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Hotel_Data!]!
+  ): [Hotel_KeyOutput!]! @fdc_generated(from: "Hotel", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Itinerario` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  itinerario_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Itinerario_Data!]!
+  ): [Itinerario_KeyOutput!]! @fdc_generated(from: "Itinerario", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Paquete` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  paquete_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Paquete_Data!]!
+  ): [Paquete_KeyOutput!]! @fdc_generated(from: "Paquete", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Promocion` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  promocion_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Promocion_Data!]!
+  ): [Promocion_KeyOutput!]! @fdc_generated(from: "Promocion", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Reservacion` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  reservacion_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Reservacion_Data!]!
+  ): [Reservacion_KeyOutput!]! @fdc_generated(from: "Reservacion", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Tarifa` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  tarifa_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Tarifa_Data!]!
+  ): [Tarifa_KeyOutput!]! @fdc_generated(from: "Tarifa", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Circuito` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Circuito`.
+  """
+  circuito_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Circuito_Data!
+  ): Circuito_KeyOutput! @fdc_generated(from: "Circuito", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Destino` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Destino`.
+  """
+  destino_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Destino_Data!
+  ): Destino_KeyOutput! @fdc_generated(from: "Destino", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Hotel` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Hotel`.
+  """
+  hotel_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Hotel_Data!
+  ): Hotel_KeyOutput! @fdc_generated(from: "Hotel", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Itinerario` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Itinerario`.
+  """
+  itinerario_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Itinerario_Data!
+  ): Itinerario_KeyOutput! @fdc_generated(from: "Itinerario", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Paquete` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Paquete`.
+  """
+  paquete_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Paquete_Data!
+  ): Paquete_KeyOutput! @fdc_generated(from: "Paquete", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Promocion` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Promocion`.
+  """
+  promocion_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Promocion_Data!
+  ): Promocion_KeyOutput! @fdc_generated(from: "Promocion", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Reservacion` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Reservacion`.
+  """
+  reservacion_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Reservacion_Data!
+  ): Reservacion_KeyOutput! @fdc_generated(from: "Reservacion", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Tarifa` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Tarifa`.
+  """
+  tarifa_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Tarifa_Data!
+  ): Tarifa_KeyOutput! @fdc_generated(from: "Tarifa", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Circuito` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Circuito`.
+  """
+  circuito_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Circuito_Data!]!
+  ): [Circuito_KeyOutput!]! @fdc_generated(from: "Circuito", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Destino` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Destino`.
+  """
+  destino_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Destino_Data!]!
+  ): [Destino_KeyOutput!]! @fdc_generated(from: "Destino", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Hotel` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Hotel`.
+  """
+  hotel_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Hotel_Data!]!
+  ): [Hotel_KeyOutput!]! @fdc_generated(from: "Hotel", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Itinerario` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Itinerario`.
+  """
+  itinerario_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Itinerario_Data!]!
+  ): [Itinerario_KeyOutput!]! @fdc_generated(from: "Itinerario", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Paquete` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Paquete`.
+  """
+  paquete_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Paquete_Data!]!
+  ): [Paquete_KeyOutput!]! @fdc_generated(from: "Paquete", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Promocion` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Promocion`.
+  """
+  promocion_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Promocion_Data!]!
+  ): [Promocion_KeyOutput!]! @fdc_generated(from: "Promocion", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Reservacion` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Reservacion`.
+  """
+  reservacion_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Reservacion_Data!]!
+  ): [Reservacion_KeyOutput!]! @fdc_generated(from: "Reservacion", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Tarifa` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Tarifa`.
+  """
+  tarifa_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Tarifa_Data!]!
+  ): [Tarifa_KeyOutput!]! @fdc_generated(from: "Tarifa", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Circuito` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Circuito` or `null` if not found.
+  """
+  circuito_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Circuito_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Circuito_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Circuito_Data!
+  ): Circuito_KeyOutput @fdc_generated(from: "Circuito", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Destino` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Destino` or `null` if not found.
+  """
+  destino_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Destino_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Destino_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Destino_Data!
+  ): Destino_KeyOutput @fdc_generated(from: "Destino", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Hotel` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Hotel` or `null` if not found.
+  """
+  hotel_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Hotel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Hotel_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Hotel_Data!
+  ): Hotel_KeyOutput @fdc_generated(from: "Hotel", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Itinerario` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Itinerario` or `null` if not found.
+  """
+  itinerario_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Itinerario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Itinerario_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Itinerario_Data!
+  ): Itinerario_KeyOutput @fdc_generated(from: "Itinerario", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Paquete` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Paquete` or `null` if not found.
+  """
+  paquete_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Paquete_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Paquete_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Paquete_Data!
+  ): Paquete_KeyOutput @fdc_generated(from: "Paquete", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Promocion` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Promocion` or `null` if not found.
+  """
+  promocion_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Promocion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Promocion_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Promocion_Data!
+  ): Promocion_KeyOutput @fdc_generated(from: "Promocion", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Reservacion` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Reservacion` or `null` if not found.
+  """
+  reservacion_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Reservacion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Reservacion_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Reservacion_Data!
+  ): Reservacion_KeyOutput @fdc_generated(from: "Reservacion", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Tarifa` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Tarifa` or `null` if not found.
+  """
+  tarifa_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Tarifa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Tarifa_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Tarifa_Data!
+  ): Tarifa_KeyOutput @fdc_generated(from: "Tarifa", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Circuito` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  circuito_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Circuito_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Circuito_Data!
+  ): Int! @fdc_generated(from: "Circuito", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Destino` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  destino_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Destino_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Destino_Data!
+  ): Int! @fdc_generated(from: "Destino", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Hotel` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  hotel_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Hotel_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Hotel_Data!
+  ): Int! @fdc_generated(from: "Hotel", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Itinerario` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  itinerario_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Itinerario_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Itinerario_Data!
+  ): Int! @fdc_generated(from: "Itinerario", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Paquete` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  paquete_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Paquete_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Paquete_Data!
+  ): Int! @fdc_generated(from: "Paquete", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Promocion` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  promocion_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Promocion_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Promocion_Data!
+  ): Int! @fdc_generated(from: "Promocion", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Reservacion` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  reservacion_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Reservacion_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Reservacion_Data!
+  ): Int! @fdc_generated(from: "Reservacion", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Tarifa` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  tarifa_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Tarifa_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Tarifa_Data!
+  ): Int! @fdc_generated(from: "Tarifa", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Circuito` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  circuito_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Circuito_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Circuito_FirstRow
+  ): Circuito_KeyOutput @fdc_generated(from: "Circuito", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Destino` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  destino_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Destino_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Destino_FirstRow
+  ): Destino_KeyOutput @fdc_generated(from: "Destino", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Hotel` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  hotel_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Hotel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Hotel_FirstRow
+  ): Hotel_KeyOutput @fdc_generated(from: "Hotel", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Itinerario` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  itinerario_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Itinerario_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Itinerario_FirstRow
+  ): Itinerario_KeyOutput @fdc_generated(from: "Itinerario", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Paquete` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  paquete_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Paquete_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Paquete_FirstRow
+  ): Paquete_KeyOutput @fdc_generated(from: "Paquete", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Promocion` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  promocion_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Promocion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Promocion_FirstRow
+  ): Promocion_KeyOutput @fdc_generated(from: "Promocion", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Reservacion` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  reservacion_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Reservacion_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Reservacion_FirstRow
+  ): Reservacion_KeyOutput @fdc_generated(from: "Reservacion", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Tarifa` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  tarifa_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Tarifa_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Tarifa_FirstRow
+  ): Tarifa_KeyOutput @fdc_generated(from: "Tarifa", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Circuito` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  circuito_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Circuito_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Circuito", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Destino` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  destino_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Destino_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Destino", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Hotel` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  hotel_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Hotel_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Hotel", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Itinerario` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  itinerario_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Itinerario_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Itinerario", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Paquete` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  paquete_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Paquete_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Paquete", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Promocion` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  promocion_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Promocion_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Promocion", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Reservacion` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  reservacion_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Reservacion_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Reservacion", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Tarifa` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  tarifa_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Tarifa_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Tarifa", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

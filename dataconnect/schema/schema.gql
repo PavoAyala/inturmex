@@ -1,0 +1,89 @@
+# Data Connect Schema for Inturmex (Gemini Version)
+
+type User @table {
+  id: String!
+  displayName: String!
+  createdAt: Timestamp! @default(expr: "request.time")
+  email: String
+  photoUrl: String
+}
+
+type Destino @table {
+  nombre: String!
+  slug: String!
+  activo: Boolean!
+  imagenUrl: String
+  descripcion: String
+  orden: Int
+}
+
+type Circuito @table {
+  destino: Destino
+  nombre: String!
+  duracionDias: Int!
+  precioUsd: Float!
+  impuestosUsd: Float!
+  activo: Boolean!
+  destacado: Boolean!
+  paises: String
+  ciudades: String
+  tipoHabitacion: String
+  imagenUrl: String
+  descripcion: String
+}
+
+type Paquete @table {
+  circuito: Circuito
+  destino: Destino
+  codigo: String!
+  nombre: String!
+  duracionDias: Int!
+  precioUsd: Float!
+  impuestosUsd: Float!
+  activo: Boolean!
+  ciudades: String
+}
+
+type Reservacion @table {
+  usuario: User
+  circuito: Circuito
+  paquete: Paquete
+  fechaViaje: Date!
+  numPersonas: Int!
+  precioTotalUsd: Float!
+  estatus: String!
+  tipoHabitacion: String
+  notas: String
+}
+
+type Itinerario @table {
+  circuito: Circuito
+  dia: Int!
+  titulo: String!
+  descripcion: String!
+}
+
+type Hotel @table {
+  circuito: Circuito
+  nombre: String!
+  ciudad: String
+  tipo: String # Ej: 'Primera', 'Lujo'
+  pais: String
+}
+
+type Tarifa @table {
+  circuito: Circuito
+  tipo: String! # Ej: 'DBL', 'SGL', 'SCL'
+  precioUsd: Float!
+  impuestosUsd: Float
+  anio: Int
+}
+
+type Promocion @table {
+  circuito: Circuito
+  imagenUrl: String!
+  activo: Boolean!
+  titulo: String
+  fechaInicio: Date
+  fechaFin: Date
+}

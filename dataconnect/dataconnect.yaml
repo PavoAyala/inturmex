@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "inturmex-c511a-service"
+location: "us-east4"
+schema:
+  source: "schema"
+  datasource:
+    postgresql:
+      database: "inturmex-c511a-database"
+      cloudSql:
+        instanceId: "inturmex-c511a-instance"
+connectorDirs:
+  - "connector"

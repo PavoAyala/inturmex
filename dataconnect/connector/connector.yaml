@@ -1,0 +1,5 @@
+connectorId: "default"
+generate:
+  typescriptSdk:
+    outputDir: "../../packages/dataconnect-sdk"
+    package: "@repo/dataconnect-sdk"

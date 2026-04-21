@@ -1,0 +1,337 @@
+[debug] [2026-04-21T03:15:20.615Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-04-21T03:15:21.173Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:15:21.175Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:15:21.176Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:15:21.184Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:21.185Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:21.185Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:15:21.187Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:21.189Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:15:21.208Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.5) on port 50001
+[debug] [2026-04-21T03:15:21.655Z] I0420 21:15:21.631621   29731 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9d76] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1596B] connector/queries.gql [1113B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.631621   29731 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9d76] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1596B] connector/queries.gql [1113B] \n"}}
+[debug] [2026-04-21T03:15:21.657Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-04-21T03:15:21.658Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-04-21T03:15:21.658Z] Starting SQL Connect Emulator with command {"binary":"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2026-04-21T03:15:21.707Z] I0420 21:15:21.706020   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.706020   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:15:21.752Z] I0420 21:15:21.749228   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 62e2] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1596B] connector/queries.gql [1113B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.749228   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 62e2] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1596B] connector/queries.gql [1113B] \n"}}
+[debug] [2026-04-21T03:15:21.797Z] I0420 21:15:21.795835   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:15:21.796732   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.795835   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] \nI0420 21:15:21.796732   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:15:21.797Z] I0420 21:15:21.797471   29745 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.797471   29745 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-04-21T03:15:21.925Z] I0420 21:15:21.925050   29745 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 62e2] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:15:21.925050   29745 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 62e2] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-04-21T03:15:22.150Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:15:22.151Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-04-21T03:15:23.722Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-04-21T03:15:23.723Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:15:23.724Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:15:23.724Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:15:23.725Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:23.725Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:15:23.726Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:23.727Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:15:23.732Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-04-21T03:15:23.733Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:15:23.733Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:15:23.734Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:15:23.734Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:23.734Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:15:23.735Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:15:23.735Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:15:23.981Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:15:23.982Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-04-21T03:15:24.300Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:15:24.301Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-04-21T03:17:31.799Z] I0420 21:17:31.798534   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:31.798534   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:17:31.831Z] I0420 21:17:31.830750   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 0500] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1596B] connector/queries.gql [1197B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:31.830750   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 0500] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1596B] connector/queries.gql [1197B] \n"}}
+[debug] [2026-04-21T03:17:31.874Z] I0420 21:17:31.873997   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:17:31.874044   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:31.873997   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] \nI0420 21:17:31.874044   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:17:41.806Z] I0420 21:17:41.805804   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:41.805804   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:17:41.844Z] I0420 21:17:41.844245   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 5a38] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1701B] connector/queries.gql [1197B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:41.844245   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 5a38] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1701B] connector/queries.gql [1197B] \n"}}
+[debug] [2026-04-21T03:17:41.892Z] I0420 21:17:41.892312   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] 
+I0420 21:17:41.892377   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:17:41.892312   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] \nI0420 21:17:41.892377   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:18:51.797Z] I0420 21:18:51.797669   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:18:51.797669   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:18:51.820Z] W0420 21:18:51.820489   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service ae44] connector "default" has errors: connector/queries.gql:4:20: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:15:41: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:25:39: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:43:38: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+
+sources: connector/mutations.gql [1701B] connector/queries.gql [1353B] 
+I0420 21:18:51.820540   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service ae44] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1701B] connector/queries.gql [1353B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0420 21:18:51.820489   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service ae44] connector \"default\" has errors: connector/queries.gql:4:20: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:15:41: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:25:39: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:43:38: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n\nsources: connector/mutations.gql [1701B] connector/queries.gql [1353B] \nI0420 21:18:51.820540   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service ae44] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1701B] connector/queries.gql [1353B] \n"}}
+[debug] [2026-04-21T03:18:51.823Z] E0420 21:18:51.822970   29745 load.go:73] Could not load sources: 
+Errors: connector/queries.gql:4:20: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:15:41: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:25:39: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:43:38: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0420 21:18:51.822970   29745 load.go:73] Could not load sources: \nErrors: connector/queries.gql:4:20: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:15:41: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:25:39: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:43:38: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n"}}
+[debug] [2026-04-21T03:18:51.823Z] I0420 21:18:51.823716   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:18:51.823737   29745 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:18:51.823716   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] \nI0420 21:18:51.823737   29745 load.go:74] Finished reloading\n"}}
+[debug] [2026-04-21T03:19:01.799Z] I0420 21:19:01.799155   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:01.799155   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:19:01.835Z] W0420 21:19:01.834696   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9a11] connector "default" has errors: connector/mutations.gql:4:133: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:16:168: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:29:94: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:39:108: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:50:114: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:4:20: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:15:41: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:25:39: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:43:38: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+
+sources: connector/mutations.gql [1941B] connector/queries.gql [1353B] 
+I0420 21:19:01.834768   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9a11] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1941B] connector/queries.gql [1353B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0420 21:19:01.834696   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9a11] connector \"default\" has errors: connector/mutations.gql:4:133: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:16:168: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:29:94: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:39:108: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:50:114: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:4:20: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:15:41: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:25:39: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:43:38: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n\nsources: connector/mutations.gql [1941B] connector/queries.gql [1353B] \nI0420 21:19:01.834768   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9a11] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1941B] connector/queries.gql [1353B] \n"}}
+[debug] [2026-04-21T03:19:01.842Z] E0420 21:19:01.841769   29745 load.go:73] Could not load sources: 
+Errors: connector/mutations.gql:4:133: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:16:168: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:29:94: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:39:108: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:50:114: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:4:20: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:15:41: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:25:39: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/queries.gql:43:38: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0420 21:19:01.841769   29745 load.go:73] Could not load sources: \nErrors: connector/mutations.gql:4:133: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:16:168: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:29:94: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:39:108: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:50:114: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:4:20: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:15:41: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:25:39: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/queries.gql:43:38: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n"}}
+[debug] [2026-04-21T03:19:01.843Z] I0420 21:19:01.843160   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] 
+I0420 21:19:01.843209   29745 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:01.843160   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] \nI0420 21:19:01.843209   29745 load.go:74] Finished reloading\n"}}
+[debug] [2026-04-21T03:19:41.807Z] I0420 21:19:41.807054   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:41.807054   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:19:41.848Z] W0420 21:19:41.847871   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 023e] connector "default" has errors: connector/mutations.gql:4:133: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:16:168: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:29:94: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:39:108: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:50:114: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+
+sources: connector/mutations.gql [1941B] connector/queries.gql [1349B] 
+I0420 21:19:41.847943   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 023e] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1941B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0420 21:19:41.847871   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 023e] connector \"default\" has errors: connector/mutations.gql:4:133: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:16:168: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:29:94: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:39:108: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:50:114: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n\nsources: connector/mutations.gql [1941B] connector/queries.gql [1349B] \nI0420 21:19:41.847943   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 023e] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1941B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:19:41.852Z] E0420 21:19:41.852310   29745 load.go:73] Could not load sources: 
+Errors: connector/mutations.gql:4:133: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:16:168: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:29:94: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:39:108: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+connector/mutations.gql:50:114: Unknown argument "insecure_reason" on directive "@auth". Did you mean "insecureReason"?
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0420 21:19:41.852310   29745 load.go:73] Could not load sources: \nErrors: connector/mutations.gql:4:133: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:16:168: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:29:94: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:39:108: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\nconnector/mutations.gql:50:114: Unknown argument \"insecure_reason\" on directive \"@auth\". Did you mean \"insecureReason\"?\n"}}
+[debug] [2026-04-21T03:19:41.853Z] I0420 21:19:41.853587   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/implicit.gql [4565B] prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:19:41.853674   29745 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:41.853587   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/implicit.gql [4565B] prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] \nI0420 21:19:41.853674   29745 load.go:74] Finished reloading\n"}}
+[debug] [2026-04-21T03:19:51.798Z] I0420 21:19:51.798134   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:51.798134   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:19:51.844Z] I0420 21:19:51.844089   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 8d01] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1936B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:51.844089   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 8d01] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/queries.gql [1349B] connector/mutations.gql [1936B] \n"}}
+[debug] [2026-04-21T03:19:51.893Z] I0420 21:19:51.892656   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] prelude.gql [82799B] main/relation.gql [50939B] main/query.gql [11489B] 
+I0420 21:19:51.892743   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:19:51.892656   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] prelude.gql [82799B] main/relation.gql [50939B] main/query.gql [11489B] \nI0420 21:19:51.892743   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:21:24.506Z] [Firebase Plugin] Received emulators started notification. Running detection.
+[debug] [2026-04-21T03:21:24.507Z] Found emulator hub locator: {"version":"15.15.0","origins":["http://127.0.0.1:4400","http://[::1]:4400"],"pid":30440}
+[debug] [2026-04-21T03:21:24.507Z] >>> [apiv2][query] GET http://127.0.0.1:4400/emulators [none]
+[debug] [2026-04-21T03:21:24.537Z] <<< [apiv2][status] GET http://127.0.0.1:4400/emulators 200
+[debug] [2026-04-21T03:21:24.537Z] <<< [apiv2][body] GET http://127.0.0.1:4400/emulators {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"extensions":{"name":"extensions","host":"127.0.0.1","port":5001},"functions":{"name":"functions","host":"127.0.0.1","port":5001},"eventarc":{"name":"eventarc","host":"127.0.0.1","port":9299},"dataconnect":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"name":"dataconnect","host":"127.0.0.1","port":9399,"pid":30464,"timeout":10000},"tasks":{"name":"tasks","host":"127.0.0.1","port":9499}}
+[debug] [2026-04-21T03:21:24.690Z] I0420 21:21:24.690299   29745 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 8d01] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:21:24.690299   29745 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 8d01] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-04-21T03:23:41.798Z] I0420 21:23:41.798294   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:23:41.798294   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:23:41.830Z] I0420 21:23:41.830304   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 1aa8] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1955B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:23:41.830304   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 1aa8] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1955B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:23:41.871Z] I0420 21:23:41.871537   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] 
+I0420 21:23:41.871580   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:23:41.871537   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] \nI0420 21:23:41.871580   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:24:01.807Z] I0420 21:24:01.806550   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:24:01.806550   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:24:01.835Z] I0420 21:24:01.834967   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 3150] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1978B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:24:01.834967   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 3150] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1978B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:24:01.865Z] I0420 21:24:01.865060   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] 
+I0420 21:24:01.865150   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:24:01.865060   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/mutation.gql [30910B] prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] \nI0420 21:24:01.865150   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:25:21.798Z] I0420 21:25:21.797993   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:25:21.797993   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:25:21.820Z] W0420 21:25:21.820320   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9aca] connector "default" has errors: connector/mutations.gql:4:72: Expected {, found (
+
+sources: connector/mutations.gql [1959B] connector/queries.gql [1349B] 
+I0420 21:25:21.820362   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9aca] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1959B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"W0420 21:25:21.820320   29745 control.go:74] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9aca] connector \"default\" has errors: connector/mutations.gql:4:72: Expected {, found (\n\nsources: connector/mutations.gql [1959B] connector/queries.gql [1349B] \nI0420 21:25:21.820362   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 9aca] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/queries.gql [1349B] connector/mutations.gql [1959B] \n"}}
+[debug] [2026-04-21T03:25:21.824Z] E0420 21:25:21.823699   29745 load.go:73] Could not load sources: 
+Errors: connector/mutations.gql:4:72: Expected {, found (
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0420 21:25:21.823699   29745 load.go:73] Could not load sources: \nErrors: connector/mutations.gql:4:72: Expected {, found (\n"}}
+[debug] [2026-04-21T03:25:21.825Z] I0420 21:25:21.825538   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] prelude.gql [82799B] 
+I0420 21:25:21.825577   29745 load.go:74] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:25:21.825538   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] prelude.gql [82799B] \nI0420 21:25:21.825577   29745 load.go:74] Finished reloading\n"}}
+[debug] [2026-04-21T03:26:41.806Z] I0420 21:26:41.806379   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:26:41.806379   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:26:41.825Z] I0420 21:26:41.825355   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 89b8] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1931B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:26:41.825355   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 89b8] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/queries.gql [1349B] connector/mutations.gql [1931B] \n"}}
+[debug] [2026-04-21T03:26:41.851Z] I0420 21:26:41.851419   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/input.gql [97977B] prelude.gql [82799B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] 
+I0420 21:26:41.851453   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:26:41.851419   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/input.gql [97977B] prelude.gql [82799B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] \nI0420 21:26:41.851453   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:27:11.807Z] I0420 21:27:11.807443   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:11.807443   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:27:11.841Z] I0420 21:27:11.840705   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 7dc9] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1930B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:11.840705   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 7dc9] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1930B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:27:11.881Z] I0420 21:27:11.880814   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] prelude.gql [82799B] main/mutation.gql [30910B] 
+I0420 21:27:11.880871   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:11.880814   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] prelude.gql [82799B] main/mutation.gql [30910B] \nI0420 21:27:11.880871   29745 load.go:109] Finished reloading\n"}}
+[debug] [2026-04-21T03:27:31.806Z] I0420 21:27:31.806439   29745 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:31.806439   29745 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:27:31.829Z] I0420 21:27:31.828725   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 11c4] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/queries.gql [1349B] connector/mutations.gql [1738B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:31.828725   29745 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 11c4] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/queries.gql [1349B] connector/mutations.gql [1738B] \n"}}
+[debug] [2026-04-21T03:27:31.858Z] I0420 21:27:31.858274   29745 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] 
+I0420 21:27:31.858310   29745 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:27:31.858274   29745 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] \nI0420 21:27:31.858310   29745 load.go:109] Finished reloading\n"}}
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] ⚠  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-04-21T03:36:53.938Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Checked firebase-tools, is up to date!
+[debug] [2026-04-21T03:36:57.550Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:36:57.551Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:36:57.552Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:36:57.555Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:57.555Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:57.555Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:36:57.557Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:57.558Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:36:57.567Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.5) on port 50001
+[debug] [2026-04-21T03:36:59.550Z] I0420 21:36:59.531227   35009 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 31d3] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:36:59.531227   35009 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 31d3] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:36:59.551Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-04-21T03:36:59.552Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-04-21T03:36:59.552Z] Starting SQL Connect Emulator with command {"binary":"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2026-04-21T03:36:59.584Z] I0420 21:36:59.576537   35024 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:36:59.576537   35024 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:36:59.589Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-04-21T03:36:59.589Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:36:59.590Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:36:59.590Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:36:59.590Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:59.590Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:36:59.591Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:59.591Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:36:59.621Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2026-04-21T03:36:59.621Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:36:59.622Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:36:59.622Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:36:59.622Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:59.623Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:36:59.623Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:36:59.624Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:36:59.644Z] I0420 21:36:59.608880   35024 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4b76] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:36:59.608880   35024 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4b76] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:36:59.666Z] I0420 21:36:59.655011   35024 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] 
+I0420 21:36:59.655070   35024 load.go:109] Finished reloading
+I0420 21:36:59.655496   35024 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:36:59.655011   35024 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/query.gql [11489B] main/mutation.gql [30910B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] \nI0420 21:36:59.655070   35024 load.go:109] Finished reloading\nI0420 21:36:59.655496   35024 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-04-21T03:36:59.834Z] I0420 21:36:59.833771   35024 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4b76] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:36:59.833771   35024 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4b76] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-04-21T03:37:00.169Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:37:00.169Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-04-21T03:37:00.175Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:37:00.176Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2026-04-21T03:37:00.177Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:37:00.177Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping SQL Connect toolkit
+[warn] ⚠  SQL Connect Emulator has exited upon receiving signal: SIGINT 
+[debug] [2026-04-21T03:45:51.887Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Checked firebase-tools, is up to date!
+[debug] [2026-04-21T03:45:54.222Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-04-21T03:45:54.224Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T03:45:54.224Z] > authorizing via signed-in user (mdanielcarvallo@gmail.com)
+[debug] [2026-04-21T03:45:54.228Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:45:54.228Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:45:54.228Z] [Firebase Plugin] User found:  mdanielcarvallo@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-04-21T03:45:54.229Z] Checked if tokens are valid: true, expires at: 1776744626389
+[debug] [2026-04-21T03:45:54.231Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2026-04-21T03:45:54.241Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting SQL Connect toolkit (version 3.4.5) on port 50001
+[debug] [2026-04-21T03:45:54.621Z] I0420 21:45:54.604791   38900 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service f1de] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:45:54.604791   38900 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service f1de] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:45:54.622Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-04-21T03:45:54.623Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-04-21T03:45:54.623Z] Starting SQL Connect Emulator with command {"binary":"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting SQL Connect Emulator with command {\"binary\":\"/home/marlon/.cache/firebase/emulators/dataconnect-emulator-3.4.5\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=/home/marlon/Documents/GitHub/inturmex/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: SQL Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"SQL Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2026-04-21T03:45:54.665Z] I0420 21:45:54.662424   38914 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:45:54.662424   38914 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2026-04-21T03:45:54.711Z] I0420 21:45:54.690860   38914 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4232] UpdateResources(): done
+Main schema: sources: schema/schema.gql [1536B] 
+Connector "default": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:45:54.690860   38914 control.go:100] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4232] UpdateResources(): done\nMain schema: sources: schema/schema.gql [1536B] \nConnector \"default\": sources: connector/mutations.gql [1738B] connector/queries.gql [1349B] \n"}}
+[debug] [2026-04-21T03:45:54.747Z] I0420 21:45:54.730876   38914 collector.go:107] schema extensions wrote into "/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] 
+I0420 21:45:54.730935   38914 load.go:109] Finished reloading
+I0420 21:45:54.731526   38914 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:45:54.730876   38914 collector.go:107] schema extensions wrote into \"/home/marlon/Documents/GitHub/inturmex/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [82799B] main/implicit.gql [4565B] main/input.gql [97977B] main/relation.gql [50939B] main/query.gql [11489B] main/mutation.gql [30910B] \nI0420 21:45:54.730935   38914 load.go:109] Finished reloading\nI0420 21:45:54.731526   38914 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-04-21T03:45:54.900Z] I0420 21:45:54.900040   38914 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4232] ExecuteGraphqlRead query IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0420 21:45:54.900040   38914 engine.go:209] [projects/emulator/locations/emulator/services/inturmex-c511a-service 4232] ExecuteGraphqlRead query IntrospectionQuery: succeeded. \n"}}
+[debug] [2026-04-21T03:45:54.995Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-04-21T03:45:54.995Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
