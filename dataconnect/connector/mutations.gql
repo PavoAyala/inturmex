@@ -2,14 +2,16 @@
 
 # Create a new destination
 mutation CreateDestino(
+  $id: String!
   $nombre: String!
   $slug: String!
   $activo: Boolean!
   $imagenUrl: String
   $descripcion: String
   $orden: Int
-) @auth(expr: "true") {
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
   destino_insert(data: { 
+    id: $id,
     nombre: $nombre, 
     slug: $slug, 
     activo: $activo, 
@@ -22,13 +24,18 @@ mutation CreateDestino(
 # Create a new circuit
 mutation CreateCircuito(
   $nombre: String!
-  $destinoId: UUID!
+  $destinoId: String!
   $duracionDias: Int!
   $precioUsd: Float!
   $impuestosUsd: Float!
   $activo: Boolean!
   $destacado: Boolean!
-) @auth(expr: "true") {
+  $paises: String
+  $ciudades: String
+  $tipoHabitacion: String
+  $imagenUrl: String
+  $descripcion: String
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
   circuito_insert(data: { 
     nombre: $nombre, 
     destino: { id: $destinoId }, 
@@ -36,7 +43,12 @@ mutation CreateCircuito(
     precioUsd: $precioUsd, 
     impuestosUsd: $impuestosUsd, 
     activo: $activo, 
-    destacado: $destacado 
+    destacado: $destacado,
+    paises: $paises,
+    ciudades: $ciudades,
+    tipoHabitacion: $tipoHabitacion,
+    imagenUrl: $imagenUrl,
+    descripcion: $descripcion
   })
 }
 
@@ -46,7 +58,7 @@ mutation UpsertUser(
   $displayName: String!
   $email: String
   $photoUrl: String
-) @auth(expr: "true") {
+) @auth(level: PUBLIC, insecureReason: "User login") {
   user_upsert(data: {
     id: $id,
     displayName: $displayName,
@@ -62,7 +74,7 @@ mutation CreateHotel(
   $ciudad: String
   $tipo: String
   $pais: String
-) @auth(expr: "true") {
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
   hotel_insert(data: {
     circuito: { id: $circuitoId },
     nombre: $nombre,
@@ -79,12 +91,45 @@ mutation CreateTarifa(
   $precioUsd: Float!
   $impuestosUsd: Float
   $anio: Int
-) @auth(expr: "true") {
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
   tarifa_insert(data: {
     circuito: { id: $circuitoId },
     tipo: $tipo,
     precioUsd: $precioUsd,
     impuestosUsd: $impuestosUsd,
     anio: $anio
+  })
+}
+
+# Create an itinerary day
+mutation CreateItinerario(
+  $circuitoId: UUID!
+  $dia: Int!
+  $titulo: String!
+  $descripcion: String!
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
+  itinerario_insert(data: {
+    circuito: { id: $circuitoId },
+    dia: $dia,
+    titulo: $titulo,
+    descripcion: $descripcion
+  })
+}
+
+# Update an existing circuit
+mutation UpdateCircuito(
+  $id: UUID!
+  $nombre: String
+  $imagenUrl: String
+  $descripcion: String
+  $paises: String
+  $ciudades: String
+) @auth(level: PUBLIC, insecureReason: "Admin and dev seeding") {
+  circuito_update(id: $id, data: {
+    nombre: $nombre,
+    imagenUrl: $imagenUrl,
+    descripcion: $descripcion,
+    paises: $paises,
+    ciudades: $ciudades
   })
 }

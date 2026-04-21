@@ -1,5 +1,46 @@
-connectorId: "default"
+connectorId: default
 generate:
   typescriptSdk:
-    outputDir: "../../packages/dataconnect-sdk"
+    outputDir: ../../packages/dataconnect-sdk
     package: "@repo/dataconnect-sdk"
+  javascriptSdk:
+    - outputDir: ../../src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../..
+      react: false
+      angular: false
+      clientCache: {}
+    - outputDir: ../../packages/ui/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../packages/ui
+      react: true
+      angular: false
+      clientCache: {}
+    - outputDir: ../../packages/typescript-config/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../packages/typescript-config
+      react: false
+      angular: false
+      clientCache: {}
+    - outputDir: ../../packages/eslint-config/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../packages/eslint-config
+      react: false
+      angular: false
+      clientCache: {}
+    - outputDir: ../../packages/constants/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../packages/constants
+      react: false
+      angular: false
+      clientCache: {}
+    - outputDir: ../../apps/web/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../apps/web
+      react: true
+      angular: false
+      clientCache: {}
+  adminNodeSdk:
+    - outputDir: ../../apps/firebase/src/dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ../../apps/firebase

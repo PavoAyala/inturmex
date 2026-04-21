@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
 
-import { useState, useEffect } from "react";
+import { getDestinos } from "../../src/dataconnect-generated";
+import { dataconnect } from "../../lib/firebase";
 
 interface Destination {
   id: string;
@@ -17,10 +19,9 @@ export default function Destinos() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/destinos")
-      .then(res => res.json())
-      .then(data => {
-        setDestinations(data.map((d: any) => ({
+    getDestinos(dataconnect)
+      .then(result => {
+        setDestinations(result.data.destinos.map((d: any) => ({
           id: d.id,
           nombre: d.nombre,
           image: d.imagenUrl,
@@ -29,7 +30,7 @@ export default function Destinos() {
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching destinations:", err);
+        console.error("Error fetching destinations from Data Connect:", err);
         setLoading(false);
       });
   }, []);

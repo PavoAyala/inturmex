@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Navbar from "../../../components/Navbar";
 import Image from "next/image";
+import { getCircuitoDetail } from "../../../src/dataconnect-generated";
+import { dataconnect } from "../../../lib/firebase";
 
 interface Itinerario {
   dia: number;
@@ -50,14 +52,33 @@ export default function CircuitoDetailPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:3000/api/circuitos/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        setCircuito(data);
+    getCircuitoDetail(dataconnect, { id: id as string })
+      .then(result => {
+        const c = result.data.circuito;
+        if (c) {
+          setCircuito({
+            id: c.id,
+            nombre: c.nombre,
+            paises: c.paises || "",
+            ciudades: c.ciudades || "",
+            duracionDias: c.duracionDias,
+            precioUsd: c.precioUsd,
+            imagenUrl: c.imagenUrl || "",
+            descripcion: c.descripcion || "",
+            itinerario: c.itinerarios_on_circuito || [],
+            tarifas: c.tarifas_on_circuito || [],
+            hoteles: c.hotels_on_circuito.map((h: any) => ({
+              nombre: h.nombre,
+              ciudad: h.ciudad || "",
+              tipo: h.tipo || ""
+            })),
+            incluye: [] // To be handled if needed from schema
+          });
+        }
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching circuit detail:", err);
+        console.error("Error fetching circuit detail from Data Connect:", err);
         setLoading(false);
       });
   }, [id]);
@@ -162,7 +183,7 @@ export default function CircuitoDetailPage() {
       </div>
 
       <style jsx>{`
-        .detail-page { background: #fff; min-height: 100vh; padding-bottom: 5rem; }
+        .detail-page { background: #fff; min-height: 100vh; padding-bottom: 5rem; color: #1a1a1a; }
         .hero-section { position: relative; height: 60vh; width: 100%; }
         .hero-img { object-fit: cover; }
         .hero-overlay {
@@ -183,13 +204,15 @@ export default function CircuitoDetailPage() {
           text-align: left;
           padding: 1rem 1.5rem;
           border: none;
-          background: #f8fafc;
+          background: #f1f5f9;
           border-radius: 0.75rem;
           font-weight: 600;
+          color: #475569;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all 0.2s ease;
         }
-        .tabs-nav button.active { background: var(--primary-orange); color: white; }
+        .tabs-nav button:hover { background: #e2e8f0; color: #1e293b; }
+        .tabs-nav button.active { background: var(--primary-orange); color: white; box-shadow: 0 4px 12px rgba(230, 138, 46, 0.2); }
         .tab-content { background: #fff; }
         .itinerary-list { display: flex; flex-direction: column; gap: 2.5rem; }
         .itinerary-item { display: flex; gap: 2rem; }

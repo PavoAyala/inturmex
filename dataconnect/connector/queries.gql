@@ -22,7 +22,7 @@ query GetDestinoBySlug($slug: String!) @auth(level: PUBLIC, insecureReason: "Pub
 }
 
 # Get circuits by destination
-query GetCircuitos($destinoId: UUID) @auth(level: PUBLIC, insecureReason: "Public travel data") {
+query GetCircuitos($destinoId: String) @auth(level: PUBLIC, insecureReason: "Public travel data") {
   circuitos(where: { 
     activo: { eq: true },
     destino: { id: { eq: $destinoId } }

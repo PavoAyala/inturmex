@@ -1,24 +1,10 @@
 extend type Circuito {
   """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Circuito", purpose: IMPLICIT_KEY_FIELD)
-  """
   ✨ Implicit foreign key field based on `Circuito`.`destino`. It must match the value of `Destino`.`id`. See `@ref` for how to customize it.
   """
-  destinoId: UUID @fdc_generated(from: "Circuito.destino", purpose: IMPLICIT_REF_FIELD)
-}
-extend type Destino {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Destino", purpose: IMPLICIT_KEY_FIELD)
+  destinoId: String @fdc_generated(from: "Circuito.destino", purpose: IMPLICIT_REF_FIELD)
 }
 extend type Hotel {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Hotel", purpose: IMPLICIT_KEY_FIELD)
   """
   ✨ Implicit foreign key field based on `Hotel`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """
@@ -26,19 +12,11 @@ extend type Hotel {
 }
 extend type Itinerario {
   """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Itinerario", purpose: IMPLICIT_KEY_FIELD)
-  """
   ✨ Implicit foreign key field based on `Itinerario`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """
   circuitoId: UUID @fdc_generated(from: "Itinerario.circuito", purpose: IMPLICIT_REF_FIELD)
 }
 extend type Paquete {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Paquete", purpose: IMPLICIT_KEY_FIELD)
   """
   ✨ Implicit foreign key field based on `Paquete`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """
@@ -46,23 +24,15 @@ extend type Paquete {
   """
   ✨ Implicit foreign key field based on `Paquete`.`destino`. It must match the value of `Destino`.`id`. See `@ref` for how to customize it.
   """
-  destinoId: UUID @fdc_generated(from: "Paquete.destino", purpose: IMPLICIT_REF_FIELD)
+  destinoId: String @fdc_generated(from: "Paquete.destino", purpose: IMPLICIT_REF_FIELD)
 }
 extend type Promocion {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Promocion", purpose: IMPLICIT_KEY_FIELD)
   """
   ✨ Implicit foreign key field based on `Promocion`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """
   circuitoId: UUID @fdc_generated(from: "Promocion.circuito", purpose: IMPLICIT_REF_FIELD)
 }
 extend type Reservacion {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Reservacion", purpose: IMPLICIT_KEY_FIELD)
   """
   ✨ Implicit foreign key field based on `Reservacion`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """
@@ -77,10 +47,6 @@ extend type Reservacion {
   usuarioId: String @fdc_generated(from: "Reservacion.usuario", purpose: IMPLICIT_REF_FIELD)
 }
 extend type Tarifa {
-  """
-  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
-  """
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Tarifa", purpose: IMPLICIT_KEY_FIELD)
   """
   ✨ Implicit foreign key field based on `Tarifa`.`circuito`. It must match the value of `Circuito`.`id`. See `@ref` for how to customize it.
   """

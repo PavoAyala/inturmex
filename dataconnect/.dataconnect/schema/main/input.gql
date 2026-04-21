@@ -65,13 +65,13 @@ input Circuito_Data {
   """
   id_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Circuito`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Circuito`.`destinoId` of type `String`
   """
-  destinoId: UUID
+  destinoId: String
   """
-  ✨ `_expr` server value variant of `destinoId` (✨ Generated from Field `Circuito`.`destinoId` of type `UUID`)
+  ✨ `_expr` server value variant of `destinoId` (✨ Generated from Field `Circuito`.`destinoId` of type `String`)
   """
-  destinoId_expr: UUID_Expr @fdc_forbiddenInVariables
+  destinoId_expr: String_Expr @fdc_forbiddenInVariables
   """
   ✨ Generated from Field `Circuito`.`destino` of type `Destino`
   """
@@ -198,9 +198,9 @@ input Circuito_Filter {
   """
   id: UUID_Filter
   """
-  ✨ Generated from Field `Circuito`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Circuito`.`destinoId` of type `String`
   """
-  destinoId: UUID_Filter
+  destinoId: String_Filter
   """
   ✨ Generated from Field `Circuito`.`destino` of type `Destino`
   """
@@ -447,7 +447,7 @@ input Circuito_Order {
   """
   id: OrderDirection
   """
-  ✨ Generated from Field `Circuito`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Circuito`.`destinoId` of type `String`
   """
   destinoId: OrderDirection
   """
@@ -608,13 +608,13 @@ input Circuito_Order {
 """
 input Destino_Data {
   """
-  ✨ Generated from Field `Destino`.`id` of type `UUID!`
+  ✨ Generated from Field `Destino`.`id` of type `String!`
   """
-  id: UUID
+  id: String
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Destino`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Destino`.`id` of type `String!`)
   """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  id_expr: String_Expr @fdc_forbiddenInVariables
   """
   ✨ Generated from Field `Destino`.`activo` of type `Boolean!`
   """
@@ -685,9 +685,9 @@ input Destino_Filter {
   """
   _or: [Destino_Filter!]
   """
-  ✨ Generated from Field `Destino`.`id` of type `UUID!`
+  ✨ Generated from Field `Destino`.`id` of type `String!`
   """
-  id: UUID_Filter
+  id: String_Filter
   """
   ✨ Generated from Field `Destino`.`activo` of type `Boolean!`
   """
@@ -808,13 +808,13 @@ input Destino_Having {
 """
 input Destino_Key {
   """
-  ✨ Generated from Field `Destino`.`id` of type `UUID!`
+  ✨ Generated from Field `Destino`.`id` of type `String!`
   """
-  id: UUID
+  id: String
   """
-  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Destino`.`id` of type `UUID!`)
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Destino`.`id` of type `String!`)
   """
-  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  id_expr: String_Expr @fdc_forbiddenInVariables
 }
 """
 ✨ Generated list filter input type for table 'Destino'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
@@ -834,7 +834,7 @@ input Destino_ListFilter {
 """
 input Destino_Order {
   """
-  ✨ Generated from Field `Destino`.`id` of type `UUID!`
+  ✨ Generated from Field `Destino`.`id` of type `String!`
   """
   id: OrderDirection
   """
@@ -1445,13 +1445,13 @@ input Paquete_Data {
   """
   circuitoId_expr: UUID_Expr @fdc_forbiddenInVariables
   """
-  ✨ Generated from Field `Paquete`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Paquete`.`destinoId` of type `String`
   """
-  destinoId: UUID
+  destinoId: String
   """
-  ✨ `_expr` server value variant of `destinoId` (✨ Generated from Field `Paquete`.`destinoId` of type `UUID`)
+  ✨ `_expr` server value variant of `destinoId` (✨ Generated from Field `Paquete`.`destinoId` of type `String`)
   """
-  destinoId_expr: UUID_Expr @fdc_forbiddenInVariables
+  destinoId_expr: String_Expr @fdc_forbiddenInVariables
   """
   ✨ Generated from Field `Paquete`.`circuito` of type `Circuito`
   """
@@ -1554,9 +1554,9 @@ input Paquete_Filter {
   """
   circuitoId: UUID_Filter
   """
-  ✨ Generated from Field `Paquete`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Paquete`.`destinoId` of type `String`
   """
-  destinoId: UUID_Filter
+  destinoId: String_Filter
   """
   ✨ Generated from Field `Paquete`.`circuito` of type `Circuito`
   """
@@ -1763,7 +1763,7 @@ input Paquete_Order {
   """
   circuitoId: OrderDirection
   """
-  ✨ Generated from Field `Paquete`.`destinoId` of type `UUID`
+  ✨ Generated from Field `Paquete`.`destinoId` of type `String`
   """
   destinoId: OrderDirection
   """

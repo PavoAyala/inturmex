@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import { getCircuitos } from "../../src/dataconnect-generated";
+import { dataconnect } from "../../lib/firebase";
 
 interface Circuito {
   id: string;
@@ -19,17 +21,24 @@ interface Circuito {
 export default function CircuitosPage() {
   const [circuitos, setCircuitos] = useState<Circuito[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filterDestination, setFilterDestination] = useState("Todos");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/circuitos")
-      .then(res => res.json())
-      .then(data => {
-        setCircuitos(data);
+    getCircuitos(dataconnect)
+      .then(result => {
+        setCircuitos(result.data.circuitos.map((c: any) => ({
+          id: c.id,
+          nombre: c.nombre,
+          paises: c.paises || "",
+          ciudades: c.ciudades || "",
+          duracionDias: c.duracionDias,
+          precioUsd: c.precioUsd,
+          imagenUrl: c.imagenUrl || "",
+          destacado: c.destacado
+        })));
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching circuitos:", err);
+        console.error("Error fetching circuitos from Data Connect:", err);
         setLoading(false);
       });
   }, []);

@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const lightRoutes = ["/nosotros", "/destinos", "/promociones", "/contacto"];
-  const isLightPage = lightRoutes.includes(pathname);
+  const lightRoutes = ["/nosotros", "/destinos", "/promociones", "/contacto", "/circuitos"];
+  const isLightPage = lightRoutes.some(route => pathname.startsWith(route));
 
   const navLinks = [
     { name: "Inicio", href: "/" },
@@ -117,11 +117,15 @@ export default function Navbar() {
         }
 
         .navbar.light .nav-link {
-          color: #333;
+          color: #1a1a1a !important;
+        }
+        
+        .navbar.light .theme-toggle {
+          color: #1a1a1a !important;
         }
 
         .nav-link:hover, .nav-link.active {
-          color: var(--primary-orange);
+          color: var(--primary-orange) !important;
         }
 
         .nav-link.active::after {
@@ -183,7 +187,8 @@ export default function Navbar() {
 
         @media (max-width: 1024px) {
           .navbar { padding: 1rem 2rem; }
-          .nav-links { display: none; }
+          .nav-links { display: flex; gap: 1rem; }
+          .nav-link { font-size: 0.85rem; }
         }
       `}</style>
     </nav>
