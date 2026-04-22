@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Navbar from "../../../components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import { getCircuitoDetail } from "../../../src/dataconnect-generated";
 import { dataconnect } from "../../../lib/firebase";
 
@@ -102,9 +103,10 @@ export default function CircuitoDetailPage() {
           <div className="container">
             <nav className="breadcrumbs">Inicio / Circuitos / {circuito.nombre}</nav>
             <h1 className="hero-title">{circuito.nombre}</h1>
-            <div className="hero-meta">
-              <span>🕒 {circuito.duracionDias} días</span>
-              <span>📍 {circuito.paises}</span>
+            <div className="hero-actions">
+              <Link href={`/circuitos/${id}/reservar/pasajeros`} className="btn-yellow">
+                Reservar Ahora
+              </Link>
             </div>
           </div>
         </div>
@@ -213,6 +215,7 @@ export default function CircuitoDetailPage() {
         }
         .tabs-nav button:hover { background: #e2e8f0; color: #1e293b; }
         .tabs-nav button.active { background: var(--primary-orange); color: white; box-shadow: 0 4px 12px rgba(230, 138, 46, 0.2); }
+        .hero-actions { margin-top: 2rem; }
         .tab-content { background: #fff; }
         .itinerary-list { display: flex; flex-direction: column; gap: 2.5rem; }
         .itinerary-item { display: flex; gap: 2rem; }

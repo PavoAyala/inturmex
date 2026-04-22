@@ -59,7 +59,7 @@ export default function CircuitosPage() {
             <div className="loading">Cargando circuitos...</div>
           ) : (
             circuitos.map(circ => (
-              <Link href={`/circuitos/${circ.id}`} key={circ.id} className="circuito-card">
+              <div key={circ.id} className="circuito-card">
                 <div className="card-image">
                   <Image 
                     src={circ.imagenUrl || "/images/placeholder.jpg"} 
@@ -76,16 +76,18 @@ export default function CircuitosPage() {
                     <span className="location">📍 {circ.paises}</span>
                   </div>
                   <h3 className="card-title">{circ.nombre}</h3>
-                  <p className="card-desc">{circ.ciudades}</p>
                   <div className="card-footer">
                     <div className="price">
                       <span className="label">DESDE</span>
                       <span className="amount">${circ.precioUsd.toLocaleString()} <small>USD</small></span>
                     </div>
-                    <button className="book-btn">Ver Detalles</button>
+                    <div className="card-actions">
+                      <Link href={`/circuitos/${circ.id}`} className="btn-outline">Ver Detalles</Link>
+                      <Link href={`/circuitos/${circ.id}/reservar/pasajeros`} className="btn-yellow">Reservar Ya</Link>
+                    </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))
           )}
         </section>
@@ -211,15 +213,15 @@ export default function CircuitosPage() {
           color: var(--primary-orange);
         }
         .price .amount small { font-size: 0.8rem; }
-        .book-btn {
-          background: #1a1a1a;
-          color: white;
-          padding: 0.75rem 1.5rem;
-          border-radius: 0.75rem;
-          border: none;
-          font-weight: 700;
-          cursor: pointer;
+        .card-actions {
+          display: flex;
+          gap: 0.5rem;
         }
+        .card-actions {
+          display: flex;
+          gap: 0.5rem;
+        }
+        .loading { text-align: center; grid-column: 1 / -1; padding: 5rem; color: #888; }
         .loading { text-align: center; grid-column: 1 / -1; padding: 5rem; color: #888; }
       `}</style>
     </main>
