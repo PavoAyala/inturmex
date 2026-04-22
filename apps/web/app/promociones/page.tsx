@@ -2,243 +2,78 @@
 
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
+import Image from "next/image";
 
-type Category = "Todo" | "Playa" | "Ciudad" | "Aventura";
-
-interface Promotion {
-  id: number;
-  title: string;
-  description: string;
-  originalPrice: string;
-  currentPrice: string;
-  discount: string;
-  category: Category;
-  badge: string;
-  image: string; // Placeholder for image link
-}
-
-const promotionsData: Promotion[] = [
-  {
-    id: 1,
-    title: "Cancún Todo Incluido",
-    description: "Resort de lujo, 5 Días y 4 Noches con vuelos incluidos.",
-    originalPrice: "$15,000 MXN",
-    currentPrice: "$10,500",
-    discount: "-30% OFF",
-    category: "Playa",
-    badge: "TIEMPO LIMITADO",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN (Ej: "/images/cancun.jpg") */
-  },
-  {
-    id: 2,
-    title: "Escapada Romántica a París",
-    description: "Vuelo redondo + Hotel Boutique en el corazón de la ciudad.",
-    originalPrice: "$45,000 MXN",
-    currentPrice: "$38,250",
-    discount: "-15% OFF",
-    category: "Ciudad",
-    badge: "EXPIRA EN 02:14:05",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 3,
-    title: "Riviera Maya Luxury",
-    description: "Resort 5 Diamantes con acceso exclusivo a parques temáticos.",
-    originalPrice: "$22,000 MXN",
-    currentPrice: "$17,600",
-    discount: "-20% OFF",
-    category: "Playa",
-    badge: "¡MÁS VENDIDO!",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 4,
-    title: "Aventura en Machu Picchu",
-    description: "Explora la ciudad perdida de los Incas con guía privado.",
-    originalPrice: "$30,000 MXN",
-    currentPrice: "$22,500",
-    discount: "-25% OFF",
-    category: "Aventura",
-    badge: "TENDENCIA",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 5,
-    title: "Madrid Clásico & Tapeo",
-    description: "Tour gastronómico y estancia en el centro histórico.",
-    originalPrice: "$28,000 MXN",
-    currentPrice: "$22,400",
-    discount: "-20% OFF",
-    category: "Ciudad",
-    badge: "OFERTA RELÁMPAGO",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 6,
-    title: "Punta Cana All Inclusive",
-    description: "Playas de arena blanca y relax absoluto en el Caribe.",
-    originalPrice: "$18,000 MXN",
-    currentPrice: "$11,700",
-    discount: "-35% OFF",
-    category: "Playa",
-    badge: "ÚLTIMOS LUGARES",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 7,
-    title: "Safari en Kenia",
-    description: "Vive la gran migración en el corazón de África.",
-    originalPrice: "$85,000 MXN",
-    currentPrice: "$76,500",
-    discount: "-10% OFF",
-    category: "Aventura",
-    badge: "EXPERIENCIA EXCLUSIVA",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 8,
-    title: "Nueva York Premium",
-    description: "Vuelo + Hotel en Manhattan y boletos para Broadway.",
-    originalPrice: "$35,000 MXN",
-    currentPrice: "$31,500",
-    discount: "-10% OFF",
-    category: "Ciudad",
-    badge: "IDEAL PARA PAREJAS",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 9,
-    title: "Patagonia Extrema",
-    description: "Trekking en el Glaciar Perito Moreno y Torres del Paine.",
-    originalPrice: "$32,000 MXN",
-    currentPrice: "$27,200",
-    discount: "-15% OFF",
-    category: "Aventura",
-    badge: "SOLO ADULTOS",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 10,
-    title: "Tokio Moderno",
-    description: "Sumérgete en la cultura japonesa y el neón de Shinjuku.",
-    originalPrice: "$42,000 MXN",
-    currentPrice: "$35,700",
-    discount: "-15% OFF",
-    category: "Ciudad",
-    badge: "¡MÁS BUSCADO!",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 11,
-    title: "Bora Bora Paradise",
-    description: "Overwater bungalow en el paraíso más exclusivo del mundo.",
-    originalPrice: "$110,000 MXN",
-    currentPrice: "$93,500",
-    discount: "-15% OFF",
-    category: "Playa",
-    badge: "SÚPER LUJO",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  },
-  {
-    id: 12,
-    title: "Gran Cañón en Helicóptero",
-    description: "Vuelo escénico y tour VIP por las maravillas de Arizona.",
-    originalPrice: "$15,000 MXN",
-    currentPrice: "$12,000",
-    discount: "-20% OFF",
-    category: "Aventura",
-    badge: "AVENTURA TOTAL",
-    image: "" /* PONER AQUÍ EL LINK DE LA IMAGEN */
-  }
+const promotionsImages = [
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(37).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(38).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(39).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(40).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(48).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(53).jpg",
+  "http://inturmex.com/proveedor/www.Inturmex%20templates%20para%20seccion%20promociones%20(58).jpg"
 ];
 
 export default function Promociones() {
-  const [activeFilter, setActiveFilter] = useState<Category>("Todo");
-
-  const filteredPromotions = activeFilter === "Todo" 
-    ? promotionsData 
-    : promotionsData.filter(p => p.category === activeFilter);
-
-  const filterOptions: Category[] = ["Todo", "Playa", "Ciudad", "Aventura"];
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <main className="promociones-page">
       <Navbar />
       
-      <section className="promociones-header">
-        <div className="container header-content">
-          <div className="badge-header">OFERTAS DE TEMPORADA</div>
-          <h1 className="title">Ofertas Exclusivas</h1>
+      <header className="promociones-hero">
+        <div className="container">
+          <div className="badge-header">OFERTAS EXCLUSIVAS 2026</div>
+          <h1 className="title">Promociones</h1>
+          <div className="title-underline"></div>
           <p className="description">
-            Aprovecha nuestros descuentos limitados y planea tu próximo viaje con tarifas preferenciales solo para miembros.
+            Descubre las mejores ofertas de temporada. Haz clic en "Maximizar" para ver los detalles de cada promoción y reserva tu próxima aventura con tarifas preferenciales.
           </p>
+        </div>
+      </header>
 
-          {/* Filter Toggles */}
-          <div className="filter-container">
-            {filterOptions.map((option) => (
-              <button 
-                key={option}
-                className={`filter-btn ${activeFilter === option ? "active" : ""}`}
-                onClick={() => setActiveFilter(option)}
-              >
-                {option}
-              </button>
+      <section className="promociones-content">
+        <div className="container">
+          <div className="promo-grid">
+            {promotionsImages.map((src, index) => (
+              <div key={index} className="promo-card">
+                <div className="promo-img-container">
+                  <img src={src} alt={`Promoción ${index + 1}`} className="promo-img" />
+                  <div className="promo-overlay">
+                    <button 
+                      className="maximize-btn"
+                      onClick={() => setSelectedImage(src)}
+                    >
+                      <span className="icon">🔍</span> Maximizar
+                    </button>
+                  </div>
+                </div>
+                <div className="promo-footer">
+                   <div className="status-dot"></div>
+                   <span>Disponible por tiempo limitado</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="promociones-grid">
-        <div className="container grid">
-          {filteredPromotions.map((promo) => (
-            <div key={promo.id} className="promo-card">
-              {/* Card Header (Image Area) */}
-              <div className="card-image-area">
-                <div className="discount-badge">{promo.discount}</div>
-                {/* 
-                  INDICACIÓN: Poner el link de la imagen en el Array promotionsData arriba.
-                  Ejemplo: background-image: url(${promo.image}); 
-                */}
-                <div 
-                  className="placeholder-img"
-                  style={{ 
-                    backgroundImage: promo.image ? `url(${promo.image})` : 'linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)' 
-                  }}
-                >
-                  {!promo.image && <span>Link de imagen pendiente</span>}
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="card-body">
-                <div className="promo-label">
-                  <span className="icon-label">★</span>
-                  {promo.badge}
-                </div>
-                <h3>{promo.title}</h3>
-                <p className="promo-desc">{promo.description}</p>
-                
-                <div className="price-container">
-                  <div className="price-info">
-                    <span className="original-price">{promo.originalPrice}</span>
-                    <span className="current-price">
-                      {promo.currentPrice} <span className="currency">MXN</span>
-                    </span>
-                  </div>
-                  <button className="reserva-btn">Reserva Ya</button>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="close-btn" onClick={() => setSelectedImage(null)}>×</button>
+            <img src={selectedImage} alt="Promoción Maximizada" className="full-img" />
+          </div>
         </div>
-      </section>
+      )}
 
       <style jsx>{`
         .promociones-page {
-          background: #ffffff;
+          background: #f8fafc;
           min-height: 100vh;
-          padding-top: 8rem;
-          color: #1a1a1a;
+          padding-top: 5rem;
+          color: #1e293b;
           font-family: var(--font-inter), sans-serif;
         }
 
@@ -248,219 +83,219 @@ export default function Promociones() {
           padding: 0 2rem;
         }
 
-        .header-content {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          margin-bottom: 4rem;
+        /* Hero Section */
+        .promociones-hero {
+          background: #ffffff;
+          padding: 6rem 0 4rem;
+          text-align: center;
+          margin-bottom: 3rem;
+          border-bottom: 1px solid #f1f5f9;
         }
 
         .badge-header {
-          color: var(--primary-orange);
+          color: #f97316;
           font-weight: 800;
           font-size: 0.8rem;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.15em;
           margin-bottom: 1rem;
         }
 
         .title {
-          font-family: var(--font-playfair), serif;
           font-size: 4rem;
-          font-weight: 700;
+          font-weight: 900;
           color: #0f172a;
-          margin: 0 0 1.5rem 0;
-        }
-
-        .description {
-          max-width: 600px;
-          font-size: 1.15rem;
-          color: #64748b;
-          margin: 0 0 3rem 0;
-        }
-
-        /* Filters */
-        .filter-container {
-          display: flex;
-          background: #f1f5f9;
-          padding: 0.4rem;
-          border-radius: 2rem;
-        }
-
-        .filter-btn {
-          background: none;
-          border: none;
-          padding: 0.6rem 1.5rem;
-          border-radius: 2rem;
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: #64748b;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .filter-btn.active {
-          background: white;
-          color: #0f172a;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Grid */
-        .promociones-grid {
-          padding-bottom: 8rem;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-        }
-
-        /* Card */
-        .promo-card {
-          background: white;
-          border-radius: 1.5rem;
-          border: 1px solid #f1f5f9;
-          overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .promo-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-image-area {
-          position: relative;
-          height: 240px;
-        }
-
-        .discount-badge {
-          position: absolute;
-          top: 1.25rem;
-          right: 1.25rem;
-          background: var(--primary-orange);
-          color: white;
-          padding: 0.4rem 0.8rem;
-          border-radius: 0.75rem;
-          font-weight: 800;
-          font-size: 0.8rem;
-          z-index: 10;
-        }
-
-        .placeholder-img {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-size: cover;
-          background-position: center;
-        }
-
-        .placeholder-img span {
-          color: #94a3b8;
-          font-size: 0.8rem;
-          font-weight: 500;
-          background: rgba(255, 255, 255, 0.5);
-          padding: 0.4rem 0.8rem;
-          border-radius: 0.5rem;
-        }
-
-        .card-body {
-          padding: 2rem;
-        }
-
-        .promo-label {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: #e68a2e;
-          font-weight: 800;
-          font-size: 0.7rem;
-          margin-bottom: 0.75rem;
-          background: #fff8f1;
-          align-self: flex-start;
-          display: inline-flex;
-          padding: 0.2rem 0.6rem;
-          border-radius: 0.4rem;
-        }
-
-        .icon-label { font-size: 1rem; }
-
-        .card-body h3 {
-          font-size: 1.5rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 0.5rem 0;
+          margin: 0;
           letter-spacing: -0.02em;
         }
 
-        .promo-desc {
+        .title-underline {
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(to right, #3b82f6, #f97316);
+          margin: 1.5rem auto;
+          border-radius: 2px;
+        }
+
+        .description {
+          max-width: 700px;
+          font-size: 1.1rem;
           color: #64748b;
-          font-size: 0.95rem;
-          line-height: 1.5;
-          margin-bottom: 2rem;
-          min-height: 2.8rem;
+          margin: 0 auto;
+          line-height: 1.6;
         }
 
-        .price-container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 1.5rem;
-          border-top: 1px solid #f1f5f9;
+        /* Grid Section */
+        .promo-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+          padding-bottom: 8rem;
         }
 
-        .price-info {
+        .promo-card {
+          background: white;
+          border-radius: 1rem;
+          overflow: hidden;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           display: flex;
           flex-direction: column;
         }
 
-        .original-price {
-          font-size: 0.8rem;
-          color: #94a3b8;
-          text-decoration: line-through;
-          margin-bottom: 0.2rem;
+        .promo-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .current-price {
-          font-size: 1.5rem;
-          font-weight: 800;
-          color: #0f172a;
+        .promo-img-container {
+          position: relative;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
         }
 
-        .currency {
-          font-size: 0.75rem;
-          color: #64748b;
-          font-weight: 500;
+        .promo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
         }
 
-        .reserva-btn {
-          background: var(--primary-orange);
-          color: white;
-          border: none;
-          padding: 0.75rem 1.25rem;
-          border-radius: 1rem;
-          font-weight: 800;
-          font-size: 0.85rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .reserva-btn:hover {
-          background: var(--primary-orange-hover);
+        .promo-card:hover .promo-img {
           transform: scale(1.05);
         }
 
-        @media (max-width: 1024px) {
-          .grid { grid-template-columns: repeat(2, 1fr); }
-          .title { font-size: 2.5rem; }
+        .promo-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          backdrop-filter: blur(2px);
         }
 
-        @media (max-width: 768px) {
-          .grid { grid-template-columns: 1fr; }
-          .promociones-page { padding-top: 6rem; }
+        .promo-card:hover .promo-overlay {
+          opacity: 1;
+        }
+
+        .maximize-btn {
+          background: white;
+          color: #0f172a;
+          border: none;
+          padding: 0.8rem 1.5rem;
+          border-radius: 0.75rem;
+          font-weight: 700;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transform: translateY(10px);
+          transition: all 0.3s ease;
+        }
+
+        .promo-card:hover .maximize-btn {
+          transform: translateY(0);
+        }
+
+        .maximize-btn:hover {
+          background: #f1f5f9;
+          transform: scale(1.05);
+        }
+
+        .promo-footer {
+          padding: 1.25rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #64748b;
+          background: #fcfcfc;
+          border-top: 1px solid #f1f5f9;
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background: #22c55e;
+          border-radius: 50%;
+          box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+        }
+
+        /* Modal */
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.9);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          backdrop-filter: blur(8px);
+          animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+          position: relative;
+          max-width: 90vw;
+          max-height: 90vh;
+          animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .full-img {
+          max-width: 100%;
+          max-height: 90vh;
+          object-fit: contain;
+          border-radius: 0.5rem;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+          position: absolute;
+          top: -1.5rem;
+          right: -1.5rem;
+          background: white;
+          color: black;
+          border: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-btn:hover {
+          transform: scale(1.1) rotate(90deg);
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+          from { transform: scale(0.9); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 1024px) {
+          .promo-grid { grid-template-columns: repeat(2, 1fr); }
+          .title { font-size: 3rem; }
+        }
+
+        @media (max-width: 640px) {
+          .promo-grid { grid-template-columns: 1fr; }
+          .title { font-size: 2.5rem; }
+          .promociones-hero { padding: 4rem 0 2rem; }
         }
       `}</style>
     </main>

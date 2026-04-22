@@ -11,6 +11,16 @@ query GetDestinos @auth(level: PUBLIC, insecureReason: "Public travel data") {
   }
 }
 
+# Get a destination by ID
+query GetDestino($id: String!) @auth(level: PUBLIC, insecureReason: "Public travel data") {
+  destino(id: $id) {
+    id
+    nombre
+    imagenUrl
+    descripcion
+  }
+}
+
 # Get a destination by slug
 query GetDestinoBySlug($slug: String!) @auth(level: PUBLIC, insecureReason: "Public travel data") {
   destinos(where: { slug: { eq: $slug } }) {

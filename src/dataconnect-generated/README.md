@@ -9,6 +9,7 @@ This README will guide you through the process of using the generated JavaScript
   - [*Connecting to the local Emulator*](#connecting-to-the-local-emulator)
 - [**Queries**](#queries)
   - [*GetDestinos*](#getdestinos)
+  - [*GetDestino*](#getdestino)
   - [*GetDestinoBySlug*](#getdestinobyslug)
   - [*GetCircuitos*](#getcircuitos)
   - [*GetCircuitoDetail*](#getcircuitodetail)
@@ -160,6 +161,120 @@ console.log(data.destinos);
 executeQuery(ref).then((response) => {
   const data = response.data;
   console.log(data.destinos);
+});
+```
+
+## GetDestino
+You can execute the `GetDestino` query using the following action shortcut function, or by calling `executeQuery()` after calling the following `QueryRef` function, both of which are defined in [dataconnect-generated/index.d.ts](./index.d.ts):
+```typescript
+getDestino(vars: GetDestinoVariables, options?: ExecuteQueryOptions): QueryPromise<GetDestinoData, GetDestinoVariables>;
+
+interface GetDestinoRef {
+  ...
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: GetDestinoVariables): QueryRef<GetDestinoData, GetDestinoVariables>;
+}
+export const getDestinoRef: GetDestinoRef;
+```
+You can also pass in a `DataConnect` instance to the action shortcut function or `QueryRef` function.
+```typescript
+getDestino(dc: DataConnect, vars: GetDestinoVariables, options?: ExecuteQueryOptions): QueryPromise<GetDestinoData, GetDestinoVariables>;
+
+interface GetDestinoRef {
+  ...
+  (dc: DataConnect, vars: GetDestinoVariables): QueryRef<GetDestinoData, GetDestinoVariables>;
+}
+export const getDestinoRef: GetDestinoRef;
+```
+
+If you need the name of the operation without creating a ref, you can retrieve the operation name by calling the `operationName` property on the getDestinoRef:
+```typescript
+const name = getDestinoRef.operationName;
+console.log(name);
+```
+
+### Variables
+The `GetDestino` query requires an argument of type `GetDestinoVariables`, which is defined in [dataconnect-generated/index.d.ts](./index.d.ts). It has the following fields:
+
+```typescript
+export interface GetDestinoVariables {
+  id: string;
+}
+```
+### Return Type
+Recall that executing the `GetDestino` query returns a `QueryPromise` that resolves to an object with a `data` property.
+
+The `data` property is an object of type `GetDestinoData`, which is defined in [dataconnect-generated/index.d.ts](./index.d.ts). It has the following fields:
+```typescript
+export interface GetDestinoData {
+  destino?: {
+    id: string;
+    nombre: string;
+    imagenUrl?: string | null;
+    descripcion?: string | null;
+  } & Destino_Key;
+}
+```
+### Using `GetDestino`'s action shortcut function
+
+```typescript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, getDestino, GetDestinoVariables } from '@dataconnect/generated';
+
+// The `GetDestino` query requires an argument of type `GetDestinoVariables`:
+const getDestinoVars: GetDestinoVariables = {
+  id: ..., 
+};
+
+// Call the `getDestino()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getDestino(getDestinoVars);
+// Variables can be defined inline as well.
+const { data } = await getDestino({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the action shortcut function.
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getDestino(dataConnect, getDestinoVars);
+
+console.log(data.destino);
+
+// Or, you can use the `Promise` API.
+getDestino(getDestinoVars).then((response) => {
+  const data = response.data;
+  console.log(data.destino);
+});
+```
+
+### Using `GetDestino`'s `QueryRef` function
+
+```typescript
+import { getDataConnect, executeQuery } from 'firebase/data-connect';
+import { connectorConfig, getDestinoRef, GetDestinoVariables } from '@dataconnect/generated';
+
+// The `GetDestino` query requires an argument of type `GetDestinoVariables`:
+const getDestinoVars: GetDestinoVariables = {
+  id: ..., 
+};
+
+// Call the `getDestinoRef()` function to get a reference to the query.
+const ref = getDestinoRef(getDestinoVars);
+// Variables can be defined inline as well.
+const ref = getDestinoRef({ id: ..., });
+
+// You can also pass in a `DataConnect` instance to the `QueryRef` function.
+const dataConnect = getDataConnect(connectorConfig);
+const ref = getDestinoRef(dataConnect, getDestinoVars);
+
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.destino);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.destino);
 });
 ```
 

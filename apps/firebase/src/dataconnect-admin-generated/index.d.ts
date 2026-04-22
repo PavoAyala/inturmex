@@ -150,6 +150,19 @@ export interface GetDestinoBySlugVariables {
   slug: string;
 }
 
+export interface GetDestinoData {
+  destino?: {
+    id: string;
+    nombre: string;
+    imagenUrl?: string | null;
+    descripcion?: string | null;
+  } & Destino_Key;
+}
+
+export interface GetDestinoVariables {
+  id: string;
+}
+
 export interface GetDestinosData {
   destinos: ({
     id: string;
@@ -258,6 +271,11 @@ export function updateCircuito(vars: UpdateCircuitoVariables, options?: Operatio
 export function getDestinos(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinosData>>;
 /** Generated Node Admin SDK operation action function for the 'GetDestinos' Query. Allow users to pass in custom DataConnect instances. */
 export function getDestinos(options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinosData>>;
+
+/** Generated Node Admin SDK operation action function for the 'GetDestino' Query. Allow users to execute without passing in DataConnect. */
+export function getDestino(dc: DataConnect, vars: GetDestinoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinoData>>;
+/** Generated Node Admin SDK operation action function for the 'GetDestino' Query. Allow users to pass in custom DataConnect instances. */
+export function getDestino(vars: GetDestinoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinoData>>;
 
 /** Generated Node Admin SDK operation action function for the 'GetDestinoBySlug' Query. Allow users to execute without passing in DataConnect. */
 export function getDestinoBySlug(dc: DataConnect, vars: GetDestinoBySlugVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinoBySlugData>>;

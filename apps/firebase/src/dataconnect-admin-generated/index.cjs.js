@@ -63,6 +63,13 @@ function getDestinos(dcOrOptions, options) {
 }
 exports.getDestinos = getDestinos;
 
+function getDestino(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeQuery('GetDestino', inputVars, inputOpts);
+}
+exports.getDestino = getDestino;
+
 function getDestinoBySlug(dcOrVarsOrOptions, varsOrOptions, options) {
   const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
   dcInstance.useGen(true);

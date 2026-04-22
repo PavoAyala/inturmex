@@ -1,4 +1,4 @@
-import { CreateDestinoData, CreateDestinoVariables, CreateCircuitoData, CreateCircuitoVariables, UpsertUserData, UpsertUserVariables, CreateHotelData, CreateHotelVariables, CreateTarifaData, CreateTarifaVariables, CreateItinerarioData, CreateItinerarioVariables, UpdateCircuitoData, UpdateCircuitoVariables, GetDestinosData, GetDestinoBySlugData, GetDestinoBySlugVariables, GetCircuitosData, GetCircuitosVariables, GetCircuitoDetailData, GetCircuitoDetailVariables } from '../';
+import { CreateDestinoData, CreateDestinoVariables, CreateCircuitoData, CreateCircuitoVariables, UpsertUserData, UpsertUserVariables, CreateHotelData, CreateHotelVariables, CreateTarifaData, CreateTarifaVariables, CreateItinerarioData, CreateItinerarioVariables, UpdateCircuitoData, UpdateCircuitoVariables, GetDestinosData, GetDestinoData, GetDestinoVariables, GetDestinoBySlugData, GetDestinoBySlugVariables, GetCircuitosData, GetCircuitosVariables, GetCircuitoDetailData, GetCircuitoDetailVariables } from '../';
 import { UseDataConnectQueryResult, useDataConnectQueryOptions, UseDataConnectMutationResult, useDataConnectMutationOptions} from '@tanstack-query-firebase/react/data-connect';
 import { UseQueryResult, UseMutationResult} from '@tanstack/react-query';
 import { DataConnect } from 'firebase/data-connect';
@@ -28,6 +28,9 @@ export function useUpdateCircuito(dc: DataConnect, options?: useDataConnectMutat
 
 export function useGetDestinos(options?: useDataConnectQueryOptions<GetDestinosData>): UseDataConnectQueryResult<GetDestinosData, undefined>;
 export function useGetDestinos(dc: DataConnect, options?: useDataConnectQueryOptions<GetDestinosData>): UseDataConnectQueryResult<GetDestinosData, undefined>;
+
+export function useGetDestino(vars: GetDestinoVariables, options?: useDataConnectQueryOptions<GetDestinoData>): UseDataConnectQueryResult<GetDestinoData, GetDestinoVariables>;
+export function useGetDestino(dc: DataConnect, vars: GetDestinoVariables, options?: useDataConnectQueryOptions<GetDestinoData>): UseDataConnectQueryResult<GetDestinoData, GetDestinoVariables>;
 
 export function useGetDestinoBySlug(vars: GetDestinoBySlugVariables, options?: useDataConnectQueryOptions<GetDestinoBySlugData>): UseDataConnectQueryResult<GetDestinoBySlugData, GetDestinoBySlugVariables>;
 export function useGetDestinoBySlug(dc: DataConnect, vars: GetDestinoBySlugVariables, options?: useDataConnectQueryOptions<GetDestinoBySlugData>): UseDataConnectQueryResult<GetDestinoBySlugData, GetDestinoBySlugVariables>;

@@ -18,6 +18,7 @@ You can also follow the instructions from the [Data Connect documentation](https
   - [*Connecting to the local Emulator*](#connecting-to-the-local-emulator)
 - [**Queries**](#queries)
   - [*GetDestinos*](#getdestinos)
+  - [*GetDestino*](#getdestino)
   - [*GetDestinoBySlug*](#getdestinobyslug)
   - [*GetCircuitos*](#getcircuitos)
   - [*GetCircuitoDetail*](#getcircuitodetail)
@@ -190,6 +191,93 @@ export default function GetDestinosComponent() {
   // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
   if (query.isSuccess) {
     console.log(query.data.destinos);
+  }
+  return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
+}
+```
+
+## GetDestino
+You can execute the `GetDestino` Query using the following Query hook function, which is defined in [dataconnect-generated/react/index.d.ts](./index.d.ts):
+
+```javascript
+useGetDestino(dc: DataConnect, vars: GetDestinoVariables, options?: useDataConnectQueryOptions<GetDestinoData>): UseDataConnectQueryResult<GetDestinoData, GetDestinoVariables>;
+```
+You can also pass in a `DataConnect` instance to the Query hook function.
+```javascript
+useGetDestino(vars: GetDestinoVariables, options?: useDataConnectQueryOptions<GetDestinoData>): UseDataConnectQueryResult<GetDestinoData, GetDestinoVariables>;
+```
+
+### Variables
+The `GetDestino` Query requires an argument of type `GetDestinoVariables`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+
+```javascript
+export interface GetDestinoVariables {
+  id: string;
+}
+```
+### Return Type
+Recall that calling the `GetDestino` Query hook function returns a `UseQueryResult` object. This object holds the state of your Query, including whether the Query is loading, has completed, or has succeeded/failed, and any data returned by the Query, among other things.
+
+To check the status of a Query, use the `UseQueryResult.status` field. You can also check for pending / success / error status using the `UseQueryResult.isPending`, `UseQueryResult.isSuccess`, and `UseQueryResult.isError` fields.
+
+To access the data returned by a Query, use the `UseQueryResult.data` field. The data for the `GetDestino` Query is of type `GetDestinoData`, which is defined in [dataconnect-generated/index.d.ts](../index.d.ts). It has the following fields:
+```javascript
+export interface GetDestinoData {
+  destino?: {
+    id: string;
+    nombre: string;
+    imagenUrl?: string | null;
+    descripcion?: string | null;
+  } & Destino_Key;
+}
+```
+
+To learn more about the `UseQueryResult` object, see the [TanStack React Query documentation](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery).
+
+### Using `GetDestino`'s Query hook function
+
+```javascript
+import { getDataConnect } from 'firebase/data-connect';
+import { connectorConfig, GetDestinoVariables } from '@dataconnect/generated';
+import { useGetDestino } from '@dataconnect/generated/react'
+
+export default function GetDestinoComponent() {
+  // The `useGetDestino` Query hook requires an argument of type `GetDestinoVariables`:
+  const getDestinoVars: GetDestinoVariables = {
+    id: ..., 
+  };
+
+  // You don't have to do anything to "execute" the Query.
+  // Call the Query hook function to get a `UseQueryResult` object which holds the state of your Query.
+  const query = useGetDestino(getDestinoVars);
+  // Variables can be defined inline as well.
+  const query = useGetDestino({ id: ..., });
+
+  // You can also pass in a `DataConnect` instance to the Query hook function.
+  const dataConnect = getDataConnect(connectorConfig);
+  const query = useGetDestino(dataConnect, getDestinoVars);
+
+  // You can also pass in a `useDataConnectQueryOptions` object to the Query hook function.
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetDestino(getDestinoVars, options);
+
+  // You can also pass both a `DataConnect` instance and a `useDataConnectQueryOptions` object.
+  const dataConnect = getDataConnect(connectorConfig);
+  const options = { staleTime: 5 * 1000 };
+  const query = useGetDestino(dataConnect, getDestinoVars, options);
+
+  // Then, you can render your component dynamically based on the status of the Query.
+  if (query.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (query.isError) {
+    return <div>Error: {query.error.message}</div>;
+  }
+
+  // If the Query is successful, you can access the data returned using the `UseQueryResult.data` field.
+  if (query.isSuccess) {
+    console.log(query.data.destino);
   }
   return <div>Query execution {query.isSuccess ? 'successful' : 'failed'}!</div>;
 }

@@ -7,6 +7,8 @@ import Image from "next/image";
 import { getCircuitoDetail } from "../../../../../src/dataconnect-generated";
 import { dataconnect } from "../../../../../lib/firebase";
 import { useAuth } from "../../../../../context/AuthContext";
+import { db } from "../../../../../lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
 import Link from "next/link";
 
 export default function PagoPage() {
@@ -40,7 +42,50 @@ export default function PagoPage() {
     setCardData(prev => ({ ...prev, [field]: value }));
   };
 
-  if (loading) return <div className="loading">Cargando...</div>;
+  const handlePayment = async () => {
+    if (!circuito || !user) return;
+
+    // Simulate payment processing
+    setLoading(true);
+
+    try {
+      const bookingId = `ITX-CIR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+      
+      // Trigger Email via Firebase Extension
+      // The extension watches the 'mail' collection
+      await addDoc(collection(db, "mail"), {
+        to: user.email,
+        message: {
+          subject: `Confirmación de Reserva - ${circuito.nombre}`,
+          html: `
+            <div style="font-family: sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
+              <h2 style="color: #f97316;">¡Hola ${user.displayName || 'Viajero'}!</h2>
+              <p>Tu reserva para <strong>${circuito.nombre}</strong> ha sido confirmada con éxito.</p>
+              <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 0; font-size: 14px; color: #64748b;">Código de Reserva:</p>
+                <p style="margin: 5px 0 0 0; font-size: 24px; font-weight: bold; color: #0f172a;">#${bookingId}</p>
+              </div>
+              <p>Estamos preparando todo para tu viaje. Muy pronto uno de nuestros asesores se pondrá en contacto contigo.</p>
+              <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;" />
+              <p style="font-size: 12px; color: #94a3b8; text-align: center;">Inturmex - Tu puerta al mundo</p>
+            </div>
+          `,
+          text: `Tu reserva #${bookingId} para ${circuito.nombre} ha sido confirmada.`
+        }
+      });
+
+      // Redirect to confirmation page
+      router.push(`/circuitos/${id}/reservar/confirmacion?bookingId=${bookingId}`);
+    } catch (err) {
+      console.error("Error processing payment/email:", err);
+      // Still redirect for demo purposes if it's just an extension issue, but ideally handle error
+      router.push(`/circuitos/${id}/reservar/confirmacion`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div className="loading">Procesando Pago Seguro...</div>;
 
   const subtotal = circuito?.precioUsd || 0;
   const taxes = subtotal * 0.16; // Example 16% tax
@@ -163,7 +208,7 @@ export default function PagoPage() {
               </Link>
               <button 
                 className="btn-yellow pay-btn"
-                onClick={() => router.push(`/circuitos/${id}/reservar/confirmacion`)}
+                onClick={handlePayment}
               >
                 Confirmar y Pagar ${total.toLocaleString()} MXN
               </button>
@@ -271,6 +316,10 @@ export default function PagoPage() {
           border-radius: 0.5rem; 
           font-size: 1rem;
           color: #1e293b;
+          background-color: #ffffff;
+        }
+        .form-group input::placeholder {
+          color: #94a3b8;
         }
         .input-with-icon { position: relative; }
         .input-with-icon .lock-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #94a3b8; }

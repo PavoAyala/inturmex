@@ -153,6 +153,19 @@ export interface GetDestinoBySlugVariables {
   slug: string;
 }
 
+export interface GetDestinoData {
+  destino?: {
+    id: string;
+    nombre: string;
+    imagenUrl?: string | null;
+    descripcion?: string | null;
+  } & Destino_Key;
+}
+
+export interface GetDestinoVariables {
+  id: string;
+}
+
 export interface GetDestinosData {
   destinos: ({
     id: string;
@@ -317,6 +330,18 @@ export const getDestinosRef: GetDestinosRef;
 
 export function getDestinos(options?: ExecuteQueryOptions): QueryPromise<GetDestinosData, undefined>;
 export function getDestinos(dc: DataConnect, options?: ExecuteQueryOptions): QueryPromise<GetDestinosData, undefined>;
+
+interface GetDestinoRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: GetDestinoVariables): QueryRef<GetDestinoData, GetDestinoVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: GetDestinoVariables): QueryRef<GetDestinoData, GetDestinoVariables>;
+  operationName: string;
+}
+export const getDestinoRef: GetDestinoRef;
+
+export function getDestino(vars: GetDestinoVariables, options?: ExecuteQueryOptions): QueryPromise<GetDestinoData, GetDestinoVariables>;
+export function getDestino(dc: DataConnect, vars: GetDestinoVariables, options?: ExecuteQueryOptions): QueryPromise<GetDestinoData, GetDestinoVariables>;
 
 interface GetDestinoBySlugRef {
   /* Allow users to create refs without passing in DataConnect */

@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDataConnect } from "firebase/data-connect";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { connectorConfig } from "../src/dataconnect-generated";
 
 const firebaseConfig = {
@@ -21,3 +22,6 @@ export const auth = getAuth(app);
 
 // Initialize Data Connect
 export const dataconnect = getDataConnect(app, connectorConfig);
+
+// Initialize Firestore
+export const db = getFirestore(app);

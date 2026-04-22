@@ -350,8 +350,11 @@ export default function PasajerosPage() {
           border: 1px solid #e2e8f0;
           border-radius: 0.5rem;
           font-size: 1rem;
-          background: #f8fafc;
+          background: #ffffff;
           color: #1e293b;
+        }
+        .form-group input::placeholder {
+          color: #94a3b8;
         }
         .hint { font-size: 0.75rem; color: #f97316; font-weight: 600; margin-top: 0.25rem; }
 

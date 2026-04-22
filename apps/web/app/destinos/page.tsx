@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 
 import { getDestinos } from "../../src/dataconnect-generated";
 import { dataconnect } from "../../lib/firebase";
@@ -62,21 +63,23 @@ export default function Destinos() {
             <div className="loading">Cargando destinos...</div>
           ) : (
             destinations.map((dest, index) => (
-              <div key={index} className="dest-card">
-                <Image 
-                  src={dest.image || "/images/placeholder.jpg"} 
-                  alt={dest.nombre} 
-                  fill 
-                  className="dest-img"
-                  unoptimized={dest.image?.startsWith('http')}
-                />
-                <div className="dest-overlay">
-                  <div className="dest-info">
-                    <h2>{dest.nombre}</h2>
-                    <span>{dest.description}</span>
+              <Link key={index} href={`/destinos/${dest.id}`} className="dest-card-link">
+                <div className="dest-card">
+                  <Image 
+                    src={dest.image || "/images/placeholder.jpg"} 
+                    alt={dest.nombre} 
+                    fill 
+                    className="dest-img"
+                    unoptimized={dest.image?.startsWith('http')}
+                  />
+                  <div className="dest-overlay">
+                    <div className="dest-info">
+                      <h2>{dest.nombre}</h2>
+                      <span>{dest.description}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))
           )}
         </div>
@@ -140,13 +143,13 @@ export default function Destinos() {
 
         .grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
         }
 
         .dest-card {
           position: relative;
-          height: 500px;
+          height: 400px;
           border-radius: 2rem;
           overflow: hidden;
           cursor: pointer;

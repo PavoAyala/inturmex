@@ -126,6 +126,21 @@ exports.getDestinos = function getDestinos(dcOrOptions, options) {
 }
 ;
 
+const getDestinoRef = (dcOrVars, vars) => {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
+  dcInstance._useGeneratedSdk();
+  return queryRef(dcInstance, 'GetDestino', inputVars);
+}
+getDestinoRef.operationName = 'GetDestino';
+exports.getDestinoRef = getDestinoRef;
+
+exports.getDestino = function getDestino(dcOrVars, varsOrOptions, options) {
+  
+  const { dc: dcInstance, vars: inputVars, options: inputOpts } = validateArgsWithOptions(connectorConfig, dcOrVars, varsOrOptions, options, true, true);
+  return executeQuery(getDestinoRef(dcInstance, inputVars), inputOpts && inputOpts.fetchPolicy);
+}
+;
+
 const getDestinoBySlugRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   dcInstance._useGeneratedSdk();
