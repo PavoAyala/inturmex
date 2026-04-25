@@ -72,6 +72,21 @@ export interface CreateItinerarioVariables {
   descripcion: string;
 }
 
+export interface CreateReservacionData {
+  reservacion_insert: Reservacion_Key;
+}
+
+export interface CreateReservacionVariables {
+  usuarioId: string;
+  circuitoId?: UUIDString | null;
+  fechaViaje: DateString;
+  numPersonas: number;
+  precioTotalUsd: number;
+  estatus: string;
+  tipoHabitacion?: string | null;
+  notas?: string | null;
+}
+
 export interface CreateTarifaData {
   tarifa_insert: Tarifa_Key;
 }
@@ -84,9 +99,45 @@ export interface CreateTarifaVariables {
   anio?: number | null;
 }
 
+export interface DeleteReservacionData {
+  reservacion_delete?: Reservacion_Key | null;
+}
+
+export interface DeleteReservacionVariables {
+  id: UUIDString;
+}
+
+export interface DeleteUserData {
+  user_delete?: User_Key | null;
+}
+
+export interface DeleteUserVariables {
+  id: string;
+}
+
 export interface Destino_Key {
   id: string;
   __typename?: 'Destino_Key';
+}
+
+export interface GetAllReservacionesData {
+  reservacions: ({
+    id: UUIDString;
+    fechaViaje: DateString;
+    numPersonas: number;
+    precioTotalUsd: number;
+    estatus: string;
+    usuario?: {
+      displayName: string;
+      email?: string | null;
+    };
+      circuito?: {
+        nombre: string;
+      };
+        paquete?: {
+          nombre: string;
+        };
+  } & Reservacion_Key)[];
 }
 
 export interface GetCircuitoDetailData {
@@ -176,6 +227,20 @@ export interface GetDestinosData {
   } & Destino_Key)[];
 }
 
+export interface GetUserByIdData {
+  user?: {
+    id: string;
+    displayName: string;
+    email?: string | null;
+    role?: string | null;
+    photoUrl?: string | null;
+  } & User_Key;
+}
+
+export interface GetUserByIdVariables {
+  id: string;
+}
+
 export interface Hotel_Key {
   id: UUIDString;
   __typename?: 'Hotel_Key';
@@ -184,6 +249,16 @@ export interface Hotel_Key {
 export interface Itinerario_Key {
   id: UUIDString;
   __typename?: 'Itinerario_Key';
+}
+
+export interface ListAllUsersData {
+  users: ({
+    id: string;
+    displayName: string;
+    email?: string | null;
+    role?: string | null;
+    createdAt: TimestampString;
+  } & User_Key)[];
 }
 
 export interface Paquete_Key {
@@ -219,6 +294,27 @@ export interface UpdateCircuitoVariables {
   ciudades?: string | null;
 }
 
+export interface UpdateReservacionData {
+  reservacion_update?: Reservacion_Key | null;
+}
+
+export interface UpdateReservacionVariables {
+  id: UUIDString;
+  estatus?: string | null;
+  numPersonas?: number | null;
+  tipoHabitacion?: string | null;
+  notas?: string | null;
+}
+
+export interface UpdateUserRoleData {
+  user_update?: User_Key | null;
+}
+
+export interface UpdateUserRoleVariables {
+  id: string;
+  role: string;
+}
+
 export interface UpsertUserData {
   user_upsert: User_Key;
 }
@@ -228,6 +324,7 @@ export interface UpsertUserVariables {
   displayName: string;
   email?: string | null;
   photoUrl?: string | null;
+  role?: string | null;
 }
 
 export interface User_Key {
@@ -270,6 +367,30 @@ export const upsertUserRef: UpsertUserRef;
 
 export function upsertUser(vars: UpsertUserVariables): MutationPromise<UpsertUserData, UpsertUserVariables>;
 export function upsertUser(dc: DataConnect, vars: UpsertUserVariables): MutationPromise<UpsertUserData, UpsertUserVariables>;
+
+interface UpdateUserRoleRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: UpdateUserRoleVariables): MutationRef<UpdateUserRoleData, UpdateUserRoleVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: UpdateUserRoleVariables): MutationRef<UpdateUserRoleData, UpdateUserRoleVariables>;
+  operationName: string;
+}
+export const updateUserRoleRef: UpdateUserRoleRef;
+
+export function updateUserRole(vars: UpdateUserRoleVariables): MutationPromise<UpdateUserRoleData, UpdateUserRoleVariables>;
+export function updateUserRole(dc: DataConnect, vars: UpdateUserRoleVariables): MutationPromise<UpdateUserRoleData, UpdateUserRoleVariables>;
+
+interface DeleteUserRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: DeleteUserVariables): MutationRef<DeleteUserData, DeleteUserVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: DeleteUserVariables): MutationRef<DeleteUserData, DeleteUserVariables>;
+  operationName: string;
+}
+export const deleteUserRef: DeleteUserRef;
+
+export function deleteUser(vars: DeleteUserVariables): MutationPromise<DeleteUserData, DeleteUserVariables>;
+export function deleteUser(dc: DataConnect, vars: DeleteUserVariables): MutationPromise<DeleteUserData, DeleteUserVariables>;
 
 interface CreateHotelRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -318,6 +439,42 @@ export const updateCircuitoRef: UpdateCircuitoRef;
 
 export function updateCircuito(vars: UpdateCircuitoVariables): MutationPromise<UpdateCircuitoData, UpdateCircuitoVariables>;
 export function updateCircuito(dc: DataConnect, vars: UpdateCircuitoVariables): MutationPromise<UpdateCircuitoData, UpdateCircuitoVariables>;
+
+interface CreateReservacionRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: CreateReservacionVariables): MutationRef<CreateReservacionData, CreateReservacionVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: CreateReservacionVariables): MutationRef<CreateReservacionData, CreateReservacionVariables>;
+  operationName: string;
+}
+export const createReservacionRef: CreateReservacionRef;
+
+export function createReservacion(vars: CreateReservacionVariables): MutationPromise<CreateReservacionData, CreateReservacionVariables>;
+export function createReservacion(dc: DataConnect, vars: CreateReservacionVariables): MutationPromise<CreateReservacionData, CreateReservacionVariables>;
+
+interface UpdateReservacionRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: UpdateReservacionVariables): MutationRef<UpdateReservacionData, UpdateReservacionVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: UpdateReservacionVariables): MutationRef<UpdateReservacionData, UpdateReservacionVariables>;
+  operationName: string;
+}
+export const updateReservacionRef: UpdateReservacionRef;
+
+export function updateReservacion(vars: UpdateReservacionVariables): MutationPromise<UpdateReservacionData, UpdateReservacionVariables>;
+export function updateReservacion(dc: DataConnect, vars: UpdateReservacionVariables): MutationPromise<UpdateReservacionData, UpdateReservacionVariables>;
+
+interface DeleteReservacionRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: DeleteReservacionVariables): MutationRef<DeleteReservacionData, DeleteReservacionVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: DeleteReservacionVariables): MutationRef<DeleteReservacionData, DeleteReservacionVariables>;
+  operationName: string;
+}
+export const deleteReservacionRef: DeleteReservacionRef;
+
+export function deleteReservacion(vars: DeleteReservacionVariables): MutationPromise<DeleteReservacionData, DeleteReservacionVariables>;
+export function deleteReservacion(dc: DataConnect, vars: DeleteReservacionVariables): MutationPromise<DeleteReservacionData, DeleteReservacionVariables>;
 
 interface GetDestinosRef {
   /* Allow users to create refs without passing in DataConnect */
@@ -378,4 +535,40 @@ export const getCircuitoDetailRef: GetCircuitoDetailRef;
 
 export function getCircuitoDetail(vars: GetCircuitoDetailVariables, options?: ExecuteQueryOptions): QueryPromise<GetCircuitoDetailData, GetCircuitoDetailVariables>;
 export function getCircuitoDetail(dc: DataConnect, vars: GetCircuitoDetailVariables, options?: ExecuteQueryOptions): QueryPromise<GetCircuitoDetailData, GetCircuitoDetailVariables>;
+
+interface GetAllReservacionesRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (): QueryRef<GetAllReservacionesData, undefined>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect): QueryRef<GetAllReservacionesData, undefined>;
+  operationName: string;
+}
+export const getAllReservacionesRef: GetAllReservacionesRef;
+
+export function getAllReservaciones(options?: ExecuteQueryOptions): QueryPromise<GetAllReservacionesData, undefined>;
+export function getAllReservaciones(dc: DataConnect, options?: ExecuteQueryOptions): QueryPromise<GetAllReservacionesData, undefined>;
+
+interface GetUserByIdRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect, vars: GetUserByIdVariables): QueryRef<GetUserByIdData, GetUserByIdVariables>;
+  operationName: string;
+}
+export const getUserByIdRef: GetUserByIdRef;
+
+export function getUserById(vars: GetUserByIdVariables, options?: ExecuteQueryOptions): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
+export function getUserById(dc: DataConnect, vars: GetUserByIdVariables, options?: ExecuteQueryOptions): QueryPromise<GetUserByIdData, GetUserByIdVariables>;
+
+interface ListAllUsersRef {
+  /* Allow users to create refs without passing in DataConnect */
+  (): QueryRef<ListAllUsersData, undefined>;
+  /* Allow users to pass in custom DataConnect instances */
+  (dc: DataConnect): QueryRef<ListAllUsersData, undefined>;
+  operationName: string;
+}
+export const listAllUsersRef: ListAllUsersRef;
+
+export function listAllUsers(options?: ExecuteQueryOptions): QueryPromise<ListAllUsersData, undefined>;
+export function listAllUsers(dc: DataConnect, options?: ExecuteQueryOptions): QueryPromise<ListAllUsersData, undefined>;
 

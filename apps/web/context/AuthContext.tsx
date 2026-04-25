@@ -2,11 +2,13 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { User } from "firebase/auth";
-import { auth } from "../lib/firebase";
+import { auth, dataconnect } from "../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { getUserById } from "../src/dataconnect-generated";
 
 interface AuthContextType {
   user: User | null;
+  role: string | null;
   loading: boolean;
   isModalOpen: boolean;
   modalType: "login" | "register";
@@ -17,6 +19,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
+  role: null,
   loading: true,
   isModalOpen: false,
   modalType: "login",
@@ -27,13 +30,27 @@ const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<"login" | "register">("login");
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setUser(firebaseUser);
+      
+      if (firebaseUser) {
+        try {
+          const { data } = await getUserById(dataconnect, { id: firebaseUser.uid });
+          setRole(data.user?.role || "usuario");
+        } catch (err) {
+          console.error("Error fetching user role:", err);
+          setRole("usuario");
+        }
+      } else {
+        setRole(null);
+      }
+      
       setLoading(false);
     });
 
@@ -55,6 +72,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthContext.Provider value={{ 
       user, 
+      role,
       loading, 
       isModalOpen, 
       modalType, 

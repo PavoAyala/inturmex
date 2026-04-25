@@ -8,17 +8,23 @@ import {
   updateProfile
 } from "firebase/auth";
 import { auth, dataconnect } from "./firebase";
-import { upsertUser } from "../src/dataconnect-generated";
+import { upsertUser, getUserById } from "../src/dataconnect-generated";
 
 const googleProvider = new GoogleAuthProvider();
 
 export const syncUserToDataConnect = async (user: FirebaseUser) => {
   try {
+    // 1. Check if user already exists to preserve their role
+    const { data } = await getUserById(dataconnect, { id: user.uid });
+    const existingRole = data.user?.role;
+
+    // 2. Upsert user but keep existing role if it exists
     await upsertUser(dataconnect, {
       id: user.uid,
       displayName: user.displayName || user.email?.split('@')[0] || "Usuario",
       email: user.email,
-      photoUrl: user.photoURL
+      photoUrl: user.photoURL,
+      role: existingRole || "usuario" // Preserve role if found, else default
     });
   } catch (error) {
     console.error("Error syncing user to Data Connect:", error);

@@ -9,7 +9,7 @@ import { execSync } from 'child_process';
 
 const updates = [
   {
-    id: "f83464d1069643f48933db27b472e967",
+    id: "735734265b574798a4f53053e02b5262",
     imagenUrl: "https://one.cdnmega.com/images/viajes/covers/16300-europa-clasica-1024x575_67f5b2870900c.webp"
   }
 ];

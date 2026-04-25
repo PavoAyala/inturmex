@@ -28,6 +28,20 @@ function upsertUser(dcOrVarsOrOptions, varsOrOptions, options) {
 }
 exports.upsertUser = upsertUser;
 
+function updateUserRole(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeMutation('UpdateUserRole', inputVars, inputOpts);
+}
+exports.updateUserRole = updateUserRole;
+
+function deleteUser(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeMutation('DeleteUser', inputVars, inputOpts);
+}
+exports.deleteUser = deleteUser;
+
 function createHotel(dcOrVarsOrOptions, varsOrOptions, options) {
   const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
   dcInstance.useGen(true);
@@ -55,6 +69,27 @@ function updateCircuito(dcOrVarsOrOptions, varsOrOptions, options) {
   return dcInstance.executeMutation('UpdateCircuito', inputVars, inputOpts);
 }
 exports.updateCircuito = updateCircuito;
+
+function createReservacion(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeMutation('CreateReservacion', inputVars, inputOpts);
+}
+exports.createReservacion = createReservacion;
+
+function updateReservacion(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeMutation('UpdateReservacion', inputVars, inputOpts);
+}
+exports.updateReservacion = updateReservacion;
+
+function deleteReservacion(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeMutation('DeleteReservacion', inputVars, inputOpts);
+}
+exports.deleteReservacion = deleteReservacion;
 
 function getDestinos(dcOrOptions, options) {
   const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
@@ -90,4 +125,25 @@ function getCircuitoDetail(dcOrVarsOrOptions, varsOrOptions, options) {
   return dcInstance.executeQuery('GetCircuitoDetail', inputVars, inputOpts);
 }
 exports.getCircuitoDetail = getCircuitoDetail;
+
+function getAllReservaciones(dcOrOptions, options) {
+  const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
+  dcInstance.useGen(true);
+  return dcInstance.executeQuery('GetAllReservaciones', undefined, inputOpts);
+}
+exports.getAllReservaciones = getAllReservaciones;
+
+function getUserById(dcOrVarsOrOptions, varsOrOptions, options) {
+  const { dc: dcInstance, vars: inputVars, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrVarsOrOptions, varsOrOptions, options, true, true);
+  dcInstance.useGen(true);
+  return dcInstance.executeQuery('GetUserById', inputVars, inputOpts);
+}
+exports.getUserById = getUserById;
+
+function listAllUsers(dcOrOptions, options) {
+  const { dc: dcInstance, options: inputOpts} = validateAdminArgs(connectorConfig, dcOrOptions, options, undefined);
+  dcInstance.useGen(true);
+  return dcInstance.executeQuery('ListAllUsers', undefined, inputOpts);
+}
+exports.listAllUsers = listAllUsers;
 

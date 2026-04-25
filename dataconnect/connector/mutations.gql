@@ -58,13 +58,25 @@ mutation UpsertUser(
   $displayName: String!
   $email: String
   $photoUrl: String
+  $role: String
 ) @auth(level: PUBLIC, insecureReason: "User login") {
   user_upsert(data: {
     id: $id,
     displayName: $displayName,
     email: $email,
-    photoUrl: $photoUrl
+    photoUrl: $photoUrl,
+    role: $role
   })
+}
+
+# Update user role specifically
+mutation UpdateUserRole($id: String!, $role: String!) @auth(level: PUBLIC, insecureReason: "Admin tool") {
+  user_update(id: $id, data: { role: $role })
+}
+
+# Delete a user by ID
+mutation DeleteUser($id: String!) @auth(level: PUBLIC, insecureReason: "Admin tool") {
+  user_delete(id: $id)
 }
 
 # Create a new hotel
@@ -132,4 +144,48 @@ mutation UpdateCircuito(
     paises: $paises,
     ciudades: $ciudades
   })
+}
+
+# Create a new reservation
+mutation CreateReservacion(
+  $usuarioId: String!
+  $circuitoId: UUID
+  $fechaViaje: Date!
+  $numPersonas: Int!
+  $precioTotalUsd: Float!
+  $estatus: String!
+  $tipoHabitacion: String
+  $notas: String
+) @auth(level: PUBLIC, insecureReason: "User booking") {
+  reservacion_insert(data: {
+    usuario: { id: $usuarioId },
+    circuito: { id: $circuitoId },
+    fechaViaje: $fechaViaje,
+    numPersonas: $numPersonas,
+    precioTotalUsd: $precioTotalUsd,
+    estatus: $estatus,
+    tipoHabitacion: $tipoHabitacion,
+    notas: $notas
+  })
+}
+
+# Update an existing reservation
+mutation UpdateReservacion(
+  $id: UUID!
+  $estatus: String
+  $numPersonas: Int
+  $tipoHabitacion: String
+  $notas: String
+) @auth(level: PUBLIC, insecureReason: "Admin update") {
+  reservacion_update(id: $id, data: {
+    estatus: $estatus,
+    numPersonas: $numPersonas,
+    tipoHabitacion: $tipoHabitacion,
+    notas: $notas
+  })
+}
+
+# Delete a reservation
+mutation DeleteReservacion($id: UUID!) @auth(level: PUBLIC, insecureReason: "Admin delete") {
+  reservacion_delete(id: $id)
 }

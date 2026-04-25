@@ -1,14 +1,15 @@
 # Data Connect Schema for Inturmex (Gemini Version)
 
-type User @table {
+type User @table(key: ["id"]) {
   id: String!
   displayName: String!
   createdAt: Timestamp! @default(expr: "request.time")
   email: String
   photoUrl: String
+  role: String @default(value: "usuario")
 }
 
-type Destino @table {
+type Destino @table(key: ["id"]) {
   id: String!
   nombre: String!
   slug: String!

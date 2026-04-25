@@ -10,10 +10,10 @@ import AuthModal from "./AuthModal";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { user, loading, openLogin, openRegister } = useAuth();
+  const { user, role, loading, openLogin, openRegister } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const lightRoutes = ["/nosotros", "/destinos", "/promociones", "/contacto", "/circuitos"];
+  const lightRoutes = ["/nosotros", "/destinos", "/promociones", "/contacto", "/circuitos", "/admin"];
   const isLightPage = lightRoutes.some(route => pathname.startsWith(route));
 
   const navLinks = [
@@ -52,6 +52,14 @@ export default function Navbar() {
             {link.name}
           </Link>
         ))}
+        {role === "admin" && (
+          <Link 
+            href="/admin" 
+            className={`nav-link admin-link ${pathname === "/admin" ? "active" : ""}`}
+          >
+            Admin
+          </Link>
+        )}
       </div>
 
       <div className="nav-actions">
@@ -106,7 +114,7 @@ export default function Navbar() {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 100;
+          z-index: 1001; /* Higher z-index for admin */
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -115,11 +123,14 @@ export default function Navbar() {
           backdrop-filter: blur(8px);
           border-bottom: 1px solid var(--glass-border);
           transition: all 0.3s ease;
+          --nav-text-color: #ffffff;
         }
 
         .navbar.light {
-          background: rgba(255, 255, 255, 0.8);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          background: #ffffff !important;
+          border-bottom: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          --nav-text-color: #0f172a;
         }
 
         .logo-link {
@@ -136,32 +147,46 @@ export default function Navbar() {
         .logo-text {
           font-weight: 800;
           font-size: 1.25rem;
-          color: #1a1a1a;
+          color: var(--nav-text-color);
           font-family: var(--font-inter), sans-serif;
         }
 
         .nav-links {
           display: flex;
           align-items: center;
-          gap: 2.5rem;
+          gap: 2.2rem;
         }
 
         .nav-link {
-          font-size: 0.95rem;
-          font-weight: 500;
-          color: white;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--nav-text-color) !important;
           text-decoration: none;
           position: relative;
-          padding-bottom: 4px;
-          transition: color 0.2s ease;
+          padding: 0.5rem 0;
+          transition: all 0.2s ease;
         }
 
         .navbar.light .nav-link {
-          color: #1a1a1a !important;
+          color: #0f172a !important;
         }
 
         .nav-link:hover, .nav-link.active {
           color: var(--primary-orange) !important;
+        }
+
+        .admin-link {
+          background: rgba(230, 138, 46, 0.1);
+          padding: 0.25rem 0.75rem !important;
+          border-radius: 0.5rem;
+          border: 1px solid rgba(230, 138, 46, 0.2);
+          animation: adminPulse 2s infinite;
+        }
+
+        @keyframes adminPulse {
+          0% { box-shadow: 0 0 0 0 rgba(230, 138, 46, 0.2); }
+          70% { box-shadow: 0 0 0 10px rgba(230, 138, 46, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(230, 138, 46, 0); }
         }
 
         .nav-link.active::after {
@@ -198,7 +223,7 @@ export default function Navbar() {
         }
 
         .navbar.light .login-btn {
-          color: #1a1a1a;
+          color: #0f172a;
         }
 
         .login-btn:hover {
@@ -244,7 +269,7 @@ export default function Navbar() {
         }
 
         .navbar.light .user-btn {
-          color: #1a1a1a;
+          color: #0f172a;
         }
 
         .user-avatar {

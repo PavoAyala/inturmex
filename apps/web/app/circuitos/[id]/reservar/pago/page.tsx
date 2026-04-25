@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Navbar from "../../../../../components/Navbar";
 import Image from "next/image";
-import { getCircuitoDetail } from "../../../../../src/dataconnect-generated";
+import { getCircuitoDetail, createReservacion } from "../../../../../src/dataconnect-generated";
 import { dataconnect } from "../../../../../lib/firebase";
 import { useAuth } from "../../../../../context/AuthContext";
 import { db } from "../../../../../lib/firebase";
@@ -51,8 +51,20 @@ export default function PagoPage() {
     try {
       const bookingId = `ITX-CIR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
       
-      // Trigger Email via Firebase Extension
-      // The extension watches the 'mail' collection
+      // 1. SAVE TO DATA CONNECT (For Admin Panel and Records)
+      console.log("Saving reservation to Data Connect...");
+      await createReservacion(dataconnect, {
+        usuarioId: user.uid,
+        circuitoId: id as string,
+        fechaViaje: new Date().toISOString().split('T')[0], // Simplified date
+        numPersonas: 1, // Defaulting to 1 for now or getting from state
+        precioTotalUsd: total,
+        estatus: "Confirmado",
+        tipoHabitacion: circuito.tipoHabitacion || "Doble",
+        notas: `Reserva generada vía web. Código: ${bookingId}`
+      });
+
+      // 2. TRIGGER EMAIL (Firestore Extension)
       await addDoc(collection(db, "mail"), {
         to: user.email,
         message: {
@@ -77,7 +89,7 @@ export default function PagoPage() {
       // Redirect to confirmation page
       router.push(`/circuitos/${id}/reservar/confirmacion?bookingId=${bookingId}`);
     } catch (err) {
-      console.error("Error processing payment/email:", err);
+      console.error("Error processing booking:", err);
       // Still redirect for demo purposes if it's just an extension issue, but ideally handle error
       router.push(`/circuitos/${id}/reservar/confirmacion`);
     } finally {

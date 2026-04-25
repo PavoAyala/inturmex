@@ -14,7 +14,7 @@ If a user is not using a supported framework, they can use the generated SDK dir
 Here's an example of how to use it with the first 5 operations:
 
 ```js
-import { createDestino, createCircuito, upsertUser, createHotel, createTarifa, createItinerario, updateCircuito, getDestinos, getDestino, getDestinoBySlug } from '@dataconnect/generated';
+import { createDestino, createCircuito, upsertUser, updateUserRole, deleteUser, createHotel, createTarifa, createItinerario, updateCircuito, createReservacion } from '@dataconnect/generated';
 
 
 // Operation CreateDestino:  For variables, look at type CreateDestinoVars in ../index.d.ts
@@ -25,6 +25,12 @@ const { data } = await CreateCircuito(dataConnect, createCircuitoVars);
 
 // Operation UpsertUser:  For variables, look at type UpsertUserVars in ../index.d.ts
 const { data } = await UpsertUser(dataConnect, upsertUserVars);
+
+// Operation UpdateUserRole:  For variables, look at type UpdateUserRoleVars in ../index.d.ts
+const { data } = await UpdateUserRole(dataConnect, updateUserRoleVars);
+
+// Operation DeleteUser:  For variables, look at type DeleteUserVars in ../index.d.ts
+const { data } = await DeleteUser(dataConnect, deleteUserVars);
 
 // Operation CreateHotel:  For variables, look at type CreateHotelVars in ../index.d.ts
 const { data } = await CreateHotel(dataConnect, createHotelVars);
@@ -38,14 +44,8 @@ const { data } = await CreateItinerario(dataConnect, createItinerarioVars);
 // Operation UpdateCircuito:  For variables, look at type UpdateCircuitoVars in ../index.d.ts
 const { data } = await UpdateCircuito(dataConnect, updateCircuitoVars);
 
-// Operation GetDestinos: 
-const { data } = await GetDestinos(dataConnect);
-
-// Operation GetDestino:  For variables, look at type GetDestinoVars in ../index.d.ts
-const { data } = await GetDestino(dataConnect, getDestinoVars);
-
-// Operation GetDestinoBySlug:  For variables, look at type GetDestinoBySlugVars in ../index.d.ts
-const { data } = await GetDestinoBySlug(dataConnect, getDestinoBySlugVars);
+// Operation CreateReservacion:  For variables, look at type CreateReservacionVars in ../index.d.ts
+const { data } = await CreateReservacion(dataConnect, createReservacionVars);
 
 
 ```

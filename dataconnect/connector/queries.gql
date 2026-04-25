@@ -78,3 +78,46 @@ query GetCircuitoDetail($id: UUID!) @auth(level: PUBLIC, insecureReason: "Public
     }
   }
 }
+ 
+# Get all reservations (for Admin)
+query GetAllReservaciones @auth(level: PUBLIC, insecureReason: "Admin panel - will add RBAC later") {
+  reservacions(orderBy: [{ fechaViaje: DESC }]) {
+    id
+    fechaViaje
+    numPersonas
+    precioTotalUsd
+    estatus
+    usuario {
+      displayName
+      email
+    }
+    circuito {
+      nombre
+    }
+    paquete {
+      nombre
+    }
+  }
+}
+
+# Get user by ID to check role
+query GetUserById($id: String!) @auth(level: PUBLIC, insecureReason: "Check role during auth") {
+  user(id: $id) {
+    id
+    displayName
+    email
+    role
+    photoUrl
+  }
+}
+
+# List all users to debug duplicates
+query ListAllUsers @auth(level: PUBLIC, insecureReason: "Debug") {
+  users {
+    id
+    displayName
+    email
+    role
+    createdAt
+  }
+}

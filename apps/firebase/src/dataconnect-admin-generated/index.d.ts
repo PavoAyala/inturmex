@@ -69,6 +69,21 @@ export interface CreateItinerarioVariables {
   descripcion: string;
 }
 
+export interface CreateReservacionData {
+  reservacion_insert: Reservacion_Key;
+}
+
+export interface CreateReservacionVariables {
+  usuarioId: string;
+  circuitoId?: UUIDString | null;
+  fechaViaje: DateString;
+  numPersonas: number;
+  precioTotalUsd: number;
+  estatus: string;
+  tipoHabitacion?: string | null;
+  notas?: string | null;
+}
+
 export interface CreateTarifaData {
   tarifa_insert: Tarifa_Key;
 }
@@ -81,9 +96,45 @@ export interface CreateTarifaVariables {
   anio?: number | null;
 }
 
+export interface DeleteReservacionData {
+  reservacion_delete?: Reservacion_Key | null;
+}
+
+export interface DeleteReservacionVariables {
+  id: UUIDString;
+}
+
+export interface DeleteUserData {
+  user_delete?: User_Key | null;
+}
+
+export interface DeleteUserVariables {
+  id: string;
+}
+
 export interface Destino_Key {
   id: string;
   __typename?: 'Destino_Key';
+}
+
+export interface GetAllReservacionesData {
+  reservacions: ({
+    id: UUIDString;
+    fechaViaje: DateString;
+    numPersonas: number;
+    precioTotalUsd: number;
+    estatus: string;
+    usuario?: {
+      displayName: string;
+      email?: string | null;
+    };
+      circuito?: {
+        nombre: string;
+      };
+        paquete?: {
+          nombre: string;
+        };
+  } & Reservacion_Key)[];
 }
 
 export interface GetCircuitoDetailData {
@@ -173,6 +224,20 @@ export interface GetDestinosData {
   } & Destino_Key)[];
 }
 
+export interface GetUserByIdData {
+  user?: {
+    id: string;
+    displayName: string;
+    email?: string | null;
+    role?: string | null;
+    photoUrl?: string | null;
+  } & User_Key;
+}
+
+export interface GetUserByIdVariables {
+  id: string;
+}
+
 export interface Hotel_Key {
   id: UUIDString;
   __typename?: 'Hotel_Key';
@@ -181,6 +246,16 @@ export interface Hotel_Key {
 export interface Itinerario_Key {
   id: UUIDString;
   __typename?: 'Itinerario_Key';
+}
+
+export interface ListAllUsersData {
+  users: ({
+    id: string;
+    displayName: string;
+    email?: string | null;
+    role?: string | null;
+    createdAt: TimestampString;
+  } & User_Key)[];
 }
 
 export interface Paquete_Key {
@@ -216,6 +291,27 @@ export interface UpdateCircuitoVariables {
   ciudades?: string | null;
 }
 
+export interface UpdateReservacionData {
+  reservacion_update?: Reservacion_Key | null;
+}
+
+export interface UpdateReservacionVariables {
+  id: UUIDString;
+  estatus?: string | null;
+  numPersonas?: number | null;
+  tipoHabitacion?: string | null;
+  notas?: string | null;
+}
+
+export interface UpdateUserRoleData {
+  user_update?: User_Key | null;
+}
+
+export interface UpdateUserRoleVariables {
+  id: string;
+  role: string;
+}
+
 export interface UpsertUserData {
   user_upsert: User_Key;
 }
@@ -225,6 +321,7 @@ export interface UpsertUserVariables {
   displayName: string;
   email?: string | null;
   photoUrl?: string | null;
+  role?: string | null;
 }
 
 export interface User_Key {
@@ -247,6 +344,16 @@ export function upsertUser(dc: DataConnect, vars: UpsertUserVariables, options?:
 /** Generated Node Admin SDK operation action function for the 'UpsertUser' Mutation. Allow users to pass in custom DataConnect instances. */
 export function upsertUser(vars: UpsertUserVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpsertUserData>>;
 
+/** Generated Node Admin SDK operation action function for the 'UpdateUserRole' Mutation. Allow users to execute without passing in DataConnect. */
+export function updateUserRole(dc: DataConnect, vars: UpdateUserRoleVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateUserRoleData>>;
+/** Generated Node Admin SDK operation action function for the 'UpdateUserRole' Mutation. Allow users to pass in custom DataConnect instances. */
+export function updateUserRole(vars: UpdateUserRoleVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateUserRoleData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeleteUser' Mutation. Allow users to execute without passing in DataConnect. */
+export function deleteUser(dc: DataConnect, vars: DeleteUserVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteUserData>>;
+/** Generated Node Admin SDK operation action function for the 'DeleteUser' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deleteUser(vars: DeleteUserVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteUserData>>;
+
 /** Generated Node Admin SDK operation action function for the 'CreateHotel' Mutation. Allow users to execute without passing in DataConnect. */
 export function createHotel(dc: DataConnect, vars: CreateHotelVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CreateHotelData>>;
 /** Generated Node Admin SDK operation action function for the 'CreateHotel' Mutation. Allow users to pass in custom DataConnect instances. */
@@ -266,6 +373,21 @@ export function createItinerario(vars: CreateItinerarioVariables, options?: Oper
 export function updateCircuito(dc: DataConnect, vars: UpdateCircuitoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateCircuitoData>>;
 /** Generated Node Admin SDK operation action function for the 'UpdateCircuito' Mutation. Allow users to pass in custom DataConnect instances. */
 export function updateCircuito(vars: UpdateCircuitoVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateCircuitoData>>;
+
+/** Generated Node Admin SDK operation action function for the 'CreateReservacion' Mutation. Allow users to execute without passing in DataConnect. */
+export function createReservacion(dc: DataConnect, vars: CreateReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CreateReservacionData>>;
+/** Generated Node Admin SDK operation action function for the 'CreateReservacion' Mutation. Allow users to pass in custom DataConnect instances. */
+export function createReservacion(vars: CreateReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<CreateReservacionData>>;
+
+/** Generated Node Admin SDK operation action function for the 'UpdateReservacion' Mutation. Allow users to execute without passing in DataConnect. */
+export function updateReservacion(dc: DataConnect, vars: UpdateReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateReservacionData>>;
+/** Generated Node Admin SDK operation action function for the 'UpdateReservacion' Mutation. Allow users to pass in custom DataConnect instances. */
+export function updateReservacion(vars: UpdateReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<UpdateReservacionData>>;
+
+/** Generated Node Admin SDK operation action function for the 'DeleteReservacion' Mutation. Allow users to execute without passing in DataConnect. */
+export function deleteReservacion(dc: DataConnect, vars: DeleteReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteReservacionData>>;
+/** Generated Node Admin SDK operation action function for the 'DeleteReservacion' Mutation. Allow users to pass in custom DataConnect instances. */
+export function deleteReservacion(vars: DeleteReservacionVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<DeleteReservacionData>>;
 
 /** Generated Node Admin SDK operation action function for the 'GetDestinos' Query. Allow users to execute without passing in DataConnect. */
 export function getDestinos(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<GetDestinosData>>;
@@ -291,4 +413,19 @@ export function getCircuitos(vars?: GetCircuitosVariables, options?: OperationOp
 export function getCircuitoDetail(dc: DataConnect, vars: GetCircuitoDetailVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetCircuitoDetailData>>;
 /** Generated Node Admin SDK operation action function for the 'GetCircuitoDetail' Query. Allow users to pass in custom DataConnect instances. */
 export function getCircuitoDetail(vars: GetCircuitoDetailVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetCircuitoDetailData>>;
+
+/** Generated Node Admin SDK operation action function for the 'GetAllReservaciones' Query. Allow users to execute without passing in DataConnect. */
+export function getAllReservaciones(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<GetAllReservacionesData>>;
+/** Generated Node Admin SDK operation action function for the 'GetAllReservaciones' Query. Allow users to pass in custom DataConnect instances. */
+export function getAllReservaciones(options?: OperationOptions): Promise<ExecuteOperationResponse<GetAllReservacionesData>>;
+
+/** Generated Node Admin SDK operation action function for the 'GetUserById' Query. Allow users to execute without passing in DataConnect. */
+export function getUserById(dc: DataConnect, vars: GetUserByIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetUserByIdData>>;
+/** Generated Node Admin SDK operation action function for the 'GetUserById' Query. Allow users to pass in custom DataConnect instances. */
+export function getUserById(vars: GetUserByIdVariables, options?: OperationOptions): Promise<ExecuteOperationResponse<GetUserByIdData>>;
+
+/** Generated Node Admin SDK operation action function for the 'ListAllUsers' Query. Allow users to execute without passing in DataConnect. */
+export function listAllUsers(dc: DataConnect, options?: OperationOptions): Promise<ExecuteOperationResponse<ListAllUsersData>>;
+/** Generated Node Admin SDK operation action function for the 'ListAllUsers' Query. Allow users to pass in custom DataConnect instances. */
+export function listAllUsers(options?: OperationOptions): Promise<ExecuteOperationResponse<ListAllUsersData>>;
 
